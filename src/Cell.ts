@@ -1,6 +1,8 @@
-import { ctx, cellSize } from './constants';
+import { ctx, CELL_SIZE, mouse } from './constants';
+import { Cell as CellInterface } from './types';
+import { collision } from './utilities/collision';
 
-export class Cell {
+export class Cell implements CellInterface {
   x: number;
   y: number;
   width: number;
@@ -9,12 +11,18 @@ export class Cell {
   constructor(x: number, y: number) {
     this.x = x;
     this.y = y;
-    this.width = cellSize;
-    this.height = cellSize;
+    this.width = CELL_SIZE;
+    this.height = CELL_SIZE;
   }
 
   draw() {
-    ctx.strokeStyle = "black";
-    ctx.strokeRect(this.x, this.y, this.width, this.height);
+    if(collision(this,mouse)){
+      ctx.strokeStyle = "black";
+      ctx.strokeRect(this.x, this.y, this.width, this.height);
+    }
+    else {
+      ctx.strokeStyle = "gray";
+      ctx.strokeRect(this.x, this.y, this.width, this.height);
+    }
   }
 }
