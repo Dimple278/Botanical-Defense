@@ -1,10 +1,22 @@
-  import { ctx, controllsBar,canvas} from '../constants';
-  import { handleGrid } from '../gameGrid';
+import { handleGameGrid } from '../gameGrid';
+import { handleResources } from '../Resource';
+import { handleEnemies } from '../Enemy';
+import { handleDefenders } from '../Defender';
+import { handleProjectiles } from '../Projectile';
+import { handleGameStatus } from '../handleGameStatus';
+import { CTX, CANVAS, state } from '../state';
+
 
   export function animate() {
-    ctx.clearRect(0,0,canvas.width,canvas.height)
-    ctx.fillStyle = "blue";
-    ctx.fillRect(0, 0, controllsBar.width, controllsBar.height);
-    handleGrid();
-    requestAnimationFrame(animate);
-  }
+    CTX.clearRect(0, 0, CANVAS.width, CANVAS.height);
+    CTX.fillStyle = 'black';
+    CTX.fillRect(0, 0, state.controlsBar.width, state.controlsBar.height);
+    handleGameGrid();
+    handleResources();
+    handleEnemies();
+    handleDefenders();
+    handleProjectiles();
+    handleGameStatus();
+    state.frame++;
+    if (!state.gameOver) requestAnimationFrame(animate);
+}

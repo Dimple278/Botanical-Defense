@@ -1,15 +1,14 @@
-import { mouse, canvas } from './constants';
+import { CANVAS, state } from './state';
 
 export function setupMouseEvents() {
-  canvas.addEventListener('mousemove', (e: MouseEvent) => {
-    const rect = canvas.getBoundingClientRect();
-    mouse.x = e.clientX - rect.left;
-    mouse.y = e.clientY - rect.top;
-  });
+    state.canvasPosition = CANVAS.getBoundingClientRect();
 
-  canvas.addEventListener('mouseout', () => {
-    mouse.x = undefined;
-    mouse.y = undefined;
-  });
-  
+    CANVAS.addEventListener('mousemove', (e: MouseEvent) => {
+        state.mouse.x = e.clientX - state.canvasPosition.left;
+        state.mouse.y = e.clientY - state.canvasPosition.top;
+    });
+
+    window.addEventListener('resize', () => {
+        state.canvasPosition = CANVAS.getBoundingClientRect();
+    });
 }

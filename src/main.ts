@@ -1,10 +1,10 @@
-import './style.css';
-import { createGrid, handleGrid } from './gameGrid';
-import { animate } from './utilities/animate';
-import './constants'; 
+import "./style.css"
+import { createGrid} from './gameGrid';
+import { addResources } from './Resource';
 import { setupMouseEvents } from './events';
+import { animate } from "./utilities/animate";
 
-setupMouseEvents();
 createGrid();
-handleGrid();
+setupMouseEvents();
+addResources();
 animate();
