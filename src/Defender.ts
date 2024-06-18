@@ -1,7 +1,7 @@
 import { CTX, CELL_SIZE, CELL_GAP,CANVAS, state, DEFENDER_COST } from './state';
 import { collision } from './utilities/collision';
 import { Projectile } from './Projectile';
-// import { CANVAS } from './constants';
+import { FloatingMsg } from './FloatingMsg';
 
 export class Defender {
     x: number;
@@ -52,6 +52,10 @@ CANVAS.addEventListener('click', (e: MouseEvent) => {
     if (state.numberOfResources >= DEFENDER_COST) {
         state.defenders.push(new Defender(gridPositionX, gridPositionY));
         state.numberOfResources -= DEFENDER_COST;
+    }else {
+        const mouseX = state.mouse.x ?? 0; 
+        const mouseY = state.mouse.y ?? 0; 
+        state.floatingMsg.push(new FloatingMsg("need more resources", mouseX, mouseY, 15, 'blue'));
     }
 });
 

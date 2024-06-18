@@ -5,6 +5,7 @@ import { handleDefenders } from '../Defender';
 import { handleProjectiles } from '../Projectile';
 import { handleGameStatus } from '../handleGameStatus';
 import { CTX, CANVAS, state } from '../state';
+import { handleFloatingMessages } from '../FloatingMsg';
 
 
   export function animate() {
@@ -17,6 +18,7 @@ import { CTX, CANVAS, state } from '../state';
     handleDefenders();
     handleProjectiles();
     handleGameStatus();
+    handleFloatingMessages();
     state.frame++;
     if (!state.gameOver) requestAnimationFrame(animate);
 }

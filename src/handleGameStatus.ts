@@ -5,6 +5,7 @@ export function handleGameStatus() {
     CTX.font = '30px Helvetica';
     CTX.fillText('Score: ' + state.score, 10, 35);
     CTX.fillText('Available resources: ' + state.numberOfResources, 10, 85);
+    
     if (state.gameOver) {
         CTX.fillStyle = 'black';
         CTX.font = '110px Helvetica';

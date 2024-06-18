@@ -1,7 +1,8 @@
 import { CTX, CANVAS, CELL_SIZE, state } from './state';
 import { collision } from './utilities/collision';
+import { IProjectile } from './types';
 
-export class Projectile {
+export class Projectile implements IProjectile{
     x: number;
     y: number;
     width: number;

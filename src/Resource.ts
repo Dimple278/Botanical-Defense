@@ -1,3 +1,4 @@
+import { FloatingMsg } from './FloatingMsg';
 import { CTX, CANVAS, CELL_SIZE, state, WINNING_SCORE } from './state';
 import { collision } from './utilities/collision';
 
@@ -40,7 +41,10 @@ export function handleResources() {
         state.resources[i].draw();
         if (state.resources[i] && collision(state.resources[i], state.mouse)) {
             state.numberOfResources += state.resources[i].amount;
+            state.floatingMsg.push(new FloatingMsg(`+${state.resources[i].amount}`, state.resources[i].x, state.resources[i].y, 20, 'yellow'));
+            state.floatingMsg.push(new FloatingMsg(`+${state.resources[i].amount}`, 290,50, 30, 'gold'));
             state.resources.splice(i, 1);
+            i--;
         }
     }
 }

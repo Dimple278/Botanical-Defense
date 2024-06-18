@@ -64,3 +64,15 @@ export interface Resource {
     update: () => void;
     draw: () => void;
 }
+
+export interface IFloatingMsg{
+    value: string;
+    x: number;
+    y: number;
+    size: number;
+    color: string;
+    lifeSpan: number;
+    opacity: number;
+    update: () => void;
+    draw: () => void;
+}
