@@ -19,6 +19,7 @@ import {
   MelonPultCard,
   SpikeweedCard,
   SunflowerCard,
+  LAWN_CLEANER_WIDTH,
 } from "./constants";
 import { isCollided } from "./utilities/collision";
 import { initializeGrid } from "./utilities/gridUtils";
@@ -28,12 +29,12 @@ import Plant, {
   Sunflower,
   ThreePeashooter,
   Wallnut,
-} from "./classes/Plant";
-import Cell from "./classes/Cell";
-import Sun from "./classes/Sun";
-import LawnCleaner from "./classes/LawnCleaner";
-import Zombie from "./classes/Zombie";
-import Projectile from "./classes/Projectile";
+} from "./components/Plant";
+import Cell from "./components/Cell";
+import Sun from "./components/Sun";
+import LawnCleaner from "./components/LawnCleaner";
+import Zombie from "./components/Zombie";
+import Projectile from "./components/Projectile";
 
 // interface Position {
 //   x: number;
@@ -55,6 +56,8 @@ class Game {
   frames: number;
   zombiesTypes: (typeof Zombie)[];
   plantsTypes: { card: HTMLImageElement; blueprint: typeof Plant }[];
+  score: number;
+  volume: boolean;
 
   constructor() {
     this.canvasPosition = canvas.getBoundingClientRect();
@@ -71,6 +74,8 @@ class Game {
     this.zombiesPositions = [];
     this.selectedPlant = 0;
     this.frames = 0;
+    this.score = 0;
+    this.volume = true;
 
     this.zombiesTypes = [Zombie];
 
@@ -85,6 +90,10 @@ class Game {
       //   { card: SpikeweedCard, blueprint: Spikeweed },
       //   { card: MelonPultCard, blueprint: MelonPult },
     ];
+
+    // for (let row = GRID_ROW_START_POS; row < canvas.height - CELL_HEIGHT; row += CELL_HEIGHT) {
+    //   this.lawnCleaners.push(new LawnCleaner(this, 350, row + 30, LAWN_CLEANER_WIDTH, LAWN_CLEANER_WIDTH));
+    // }
   }
 
   addListeners() {
@@ -160,11 +169,42 @@ class Game {
     });
   }
 
-  manageAllPlants() {
-    this.plants.forEach((plant) => {
-      plant.update();
+  // manageAllPlants() {
+  //   this.plants.forEach((plant) => {
+  //     plant.update();
+  //   });
+  //   this.plants = this.plants.filter((plant) => plant.health > 0);
+  // }
+
+  manageAllZombies() {
+    this.zombies.forEach((zombie) => {
+      zombie.update();
+      if (zombie.x < GRID_COL_START_POS - LAWN_CLEANER_WIDTH) {
+        gameState.current = gameState.gameOver;
+      }
+      if (zombie.health <= 0) {
+        zombie.die = true;
+        zombie.attacking = false;
+      }
     });
-    this.plants = this.plants.filter((plant) => plant.health > 0);
+    let selectedRow =
+      Math.floor(Math.random() * 5) * CELL_HEIGHT +
+      GRID_ROW_START_POS +
+      CELL_PAD;
+    if (this.frames % this.zombiesSpawnRate === 0) {
+      let choice = Math.floor(Math.random() * this.zombiesTypes.length);
+      this.zombies.push(
+        new this.zombiesTypes[choice](
+          this,
+          canvas.width,
+          selectedRow,
+          CELL_WIDTH,
+          CELL_HEIGHT
+        )
+      );
+      this.zombiesPositions.push(selectedRow);
+      this.zombiesSpawnRate -= this.zombiesSpawnRate > 300 ? 20 : 0;
+    }
   }
 
   manageAllProjectiles() {
@@ -194,6 +234,14 @@ class Game {
     this.lawnCleaners.forEach((lawncleaner) => {
       lawncleaner.update();
     });
+  }
+
+  cleanOrphanObjects() {
+    this.projectiles = this.projectiles.filter(
+      (projectile) => !projectile.delete
+    );
+    this.suns = this.suns.filter((sun) => !sun.delete);
+    this.zombies = this.zombies.filter((zombie) => !zombie.delete);
   }
 
   showResources() {
@@ -238,9 +286,14 @@ class Game {
     ctx.fillStyle = "black";
     ctx.drawImage(bg, 0, 0, canvas.width + 573, canvas.height);
     this.drawGrid();
+    // this.manageAllPlants();
+    this.manageAllZombies();
     this.manageAllProjectiles();
     this.showResources();
     this.manageSuns();
+    this.manageLawnCleaners();
+    this.cleanOrphanObjects();
+    // this.showCards();
     this.frames++;
 
     if (gameState.current !== gameState.gameOver)

@@ -1,5 +1,5 @@
 import { CELL_WIDTH, CELL_HEIGHT, ctx, sunImg } from "../constants";
-import Game from "../Game1";
+import Game from "../Game";
 
 export default class Sun {
   game: Game;
