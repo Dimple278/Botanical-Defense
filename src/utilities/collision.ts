@@ -1,19 +1,12 @@
-import { Collision } from '../types';
-
-export function collision(first: Collision, second: Collision): boolean {
+export const isCollided = (obj1: { x: number, y: number, w: number, h: number }, obj2: { x: number, y: number, w: number, h: number }): boolean => {
   if (
-    first.x === undefined ||
-    first.y === undefined ||
-    second.x === undefined ||
-    second.y === undefined
+      obj1.x > obj2.x + obj2.w ||
+      obj1.x + obj1.w < obj2.x || 
+      obj1.y + obj1.h < obj2.y || 
+      obj1.y > obj2.y + obj2.h 
   ) {
-    return false;
+      return false;
+  } else {
+      return true;
   }
-
-  return !(
-    first.x + first.width < second.x ||
-    first.x > second.x + second.width ||
-    first.y + first.height < second.y ||
-    first.y > second.y + second.height
-  );
-}
+};
