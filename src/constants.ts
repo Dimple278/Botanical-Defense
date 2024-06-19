@@ -1,18 +1,11 @@
 import { getImage } from "./utilities/getImage";
 
-// Assuming canvas exists in the document
 export const canvas: HTMLCanvasElement = document.querySelector("canvas")!;
 export const ctx: CanvasRenderingContext2D = canvas.getContext("2d")!;
 
 // Assigns width and height to the canvas
 canvas.width = 1898;
 canvas.height = 970;
-
-// Get loading element
-export const loading: HTMLElement = document.querySelector(".loading")!;
-// Canvas constants
-
-export const startMenuBtn = document.querySelector(".start-menu__btn");
 
 // Required Variables
 export const CELL_WIDTH = 140;

@@ -35,12 +35,10 @@ import Sun from "./components/Sun";
 import LawnCleaner from "./components/LawnCleaner";
 import Zombie from "./components/Zombies/Zombie";
 import FootballZombie from "./components/Zombies/FootballZombie";
+import ConeHeadZombie from "./components/Zombies/ConeHeadZombie";
 import Projectile from "./components/Projectile";
-
-// interface Position {
-//   x: number;
-//   y: number;
-// }
+import BucketHeadZombie from "./components/Zombies/BucketZombie";
+import BallonZombie from "./components/Zombies/BalloonZombie";
 
 export class Game {
   canvasPosition: DOMRect;
@@ -56,7 +54,6 @@ export class Game {
   selectedPlant: number;
   frames: number;
   zombiesTypes: (typeof Zombie)[];
-  plantsTypes: { card: HTMLImageElement; blueprint: typeof Plant }[];
   score: number;
   volume: boolean;
 
@@ -78,23 +75,29 @@ export class Game {
     this.score = 0;
     this.volume = true;
 
-    this.zombiesTypes = [Zombie, FootballZombie];
-
-    this.plantsTypes = [
-      { card: SunflowerCard, blueprint: Sunflower },
-      { card: PeaShooterCard, blueprint: PeaShooter },
-      { card: RepeaterCard, blueprint: Repeater },
-      { card: ThreePeaShooterCard, blueprint: ThreePeashooter },
-      //   { card: ChomperCard, blueprint: Chomper },
-      { card: WallNutCard, blueprint: Wallnut },
-      //   { card: PotatoMinesCard, blueprint: PotatoMines },
-      //   { card: SpikeweedCard, blueprint: Spikeweed },
-      //   { card: MelonPultCard, blueprint: MelonPult },
+    this.zombiesTypes = [
+      Zombie,
+      FootballZombie,
+      ConeHeadZombie,
+      BucketHeadZombie,
+      BallonZombie,
     ];
 
-    // for (let row = GRID_ROW_START_POS; row < canvas.height - CELL_HEIGHT; row += CELL_HEIGHT) {
-    //   this.lawnCleaners.push(new LawnCleaner(this, 350, row + 30, LAWN_CLEANER_WIDTH, LAWN_CLEANER_WIDTH));
-    // }
+    for (
+      let row = GRID_ROW_START_POS;
+      row < canvas.height - CELL_HEIGHT;
+      row += CELL_HEIGHT
+    ) {
+      this.lawnCleaners.push(
+        new LawnCleaner(
+          this,
+          350,
+          row + 30,
+          LAWN_CLEANER_WIDTH,
+          LAWN_CLEANER_WIDTH
+        )
+      );
+    }
   }
 
   addListeners() {
@@ -119,49 +122,6 @@ export class Game {
     canvas.addEventListener("mouseup", () => {
       mouseStatus.clicked = false;
     });
-
-    canvas.addEventListener("click", () => {
-      let cellPosX: number | undefined;
-      let cellPosY: number | undefined;
-      let plantCost = 25;
-
-      this.grids.every((cell) => {
-        if (isCollided(cell, mouseStatus)) {
-          cellPosX = cell.x + CELL_PAD;
-          cellPosY = cell.y + CELL_PAD;
-          return false;
-        }
-        return true;
-      });
-
-      if (
-        cellPosX === undefined ||
-        cellPosY === undefined ||
-        cellPosX < GRID_COL_START_POS ||
-        cellPosY < GRID_ROW_START_POS
-      ) {
-        return;
-      }
-
-      for (let i = 0; i < this.plants.length; i++) {
-        if (this.plants[i].x === cellPosX && this.plants[i].y === cellPosY) {
-          return;
-        }
-      }
-
-      if (plantCost <= this.sunCounts) {
-        this.plants.push(
-          new this.plantsTypes[this.selectedPlant].blueprint(
-            this,
-            cellPosX,
-            cellPosY,
-            CELL_WIDTH - 25,
-            CELL_HEIGHT - 25
-          )
-        );
-        this.sunCounts -= plantCost;
-      }
-    });
   }
 
   drawGrid() {
@@ -169,13 +129,6 @@ export class Game {
       gridCell.draw(ctx);
     });
   }
-
-  // manageAllPlants() {
-  //   this.plants.forEach((plant) => {
-  //     plant.update();
-  //   });
-  //   this.plants = this.plants.filter((plant) => plant.health > 0);
-  // }
 
   manageAllZombies() {
     this.zombies.forEach((zombie) => {
@@ -208,12 +161,6 @@ export class Game {
     }
   }
 
-  manageAllProjectiles() {
-    this.projectiles.forEach((projectile) => {
-      projectile.update();
-    });
-  }
-
   manageSuns() {
     if (this.frames % 300 === 0) {
       let x =
@@ -231,16 +178,7 @@ export class Game {
     });
   }
 
-  manageLawnCleaners() {
-    this.lawnCleaners.forEach((lawncleaner) => {
-      lawncleaner.update();
-    });
-  }
-
   cleanOrphanObjects() {
-    this.projectiles = this.projectiles.filter(
-      (projectile) => !projectile.delete
-    );
     this.suns = this.suns.filter((sun) => !sun.delete);
     this.zombies = this.zombies.filter((zombie) => !zombie.delete);
   }
@@ -255,46 +193,14 @@ export class Game {
     ctx.fillText(this.sunCounts.toString(), 79, 48);
   }
 
-  showCards() {
-    this.plantsTypes.forEach((plant, idx) => {
-      let cardBoundary = {
-        x: 20,
-        y: GRID_ROW_START_POS + 80 * idx,
-        w: 100,
-        h: 60,
-      };
-      let cardY = GRID_ROW_START_POS + 80 * idx;
-
-      ctx.drawImage(
-        plant.card,
-        0,
-        0,
-        cardBoundary.w,
-        cardBoundary.h,
-        cardBoundary.x,
-        cardY,
-        idx === this.selectedPlant ? cardBoundary.w + 15 : cardBoundary.w,
-        idx === this.selectedPlant ? cardBoundary.h + 8 : cardBoundary.h
-      );
-
-      if (isCollided(mouseStatus, cardBoundary) && mouseStatus.clicked) {
-        this.selectedPlant = idx;
-      }
-    });
-  }
-
   animate = () => {
     ctx.fillStyle = "black";
     ctx.drawImage(bg, 0, 0, canvas.width + 573, canvas.height);
     this.drawGrid();
-    // this.manageAllPlants();
     this.manageAllZombies();
-    this.manageAllProjectiles();
     this.showResources();
     this.manageSuns();
-    this.manageLawnCleaners();
     this.cleanOrphanObjects();
-    // this.showCards();
     this.frames++;
 
     if (gameState.current !== gameState.gameOver)

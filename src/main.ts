@@ -1,8 +1,8 @@
-import Game from "./Game";
-import { loadImages } from "./constants";
+import Game from "./Game1.ts";
+import { loadImages } from "./constants.ts";
 
-const game = new Game();
 window.onload = async () => {
   await loadImages();
+  const game = new Game();
   game.init();
 };
