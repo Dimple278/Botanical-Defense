@@ -33,7 +33,8 @@ import Plant, {
 import Cell from "./components/Cell";
 import Sun from "./components/Sun";
 import LawnCleaner from "./components/LawnCleaner";
-import Zombie from "./components/Zombie";
+import Zombie from "./components/Zombies/Zombie";
+import FootballZombie from "./components/Zombies/FootballZombie";
 import Projectile from "./components/Projectile";
 
 // interface Position {
@@ -41,7 +42,7 @@ import Projectile from "./components/Projectile";
 //   y: number;
 // }
 
-class Game {
+export class Game {
   canvasPosition: DOMRect;
   grids: Cell[];
   zombies: Zombie[];
@@ -77,7 +78,7 @@ class Game {
     this.score = 0;
     this.volume = true;
 
-    this.zombiesTypes = [Zombie];
+    this.zombiesTypes = [Zombie, FootballZombie];
 
     this.plantsTypes = [
       { card: SunflowerCard, blueprint: Sunflower },

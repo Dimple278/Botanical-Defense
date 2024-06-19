@@ -1,9 +1,9 @@
 import {
   CELL_PAD,
   ctx,
-  FootballZombieSprite,
+  NormalZombieSprite,
   // zombieFall,
-} from "../constants.ts";
+} from "../../constants.ts";
 
 interface Game {
   zombiesPositions: number[];
@@ -32,15 +32,15 @@ export default class Zombie {
   minFrame!: number;
   maxFrame!: number;
   frameX!: number;
-  private frameY!: number;
-  private spriteW!: number;
-  private spriteH!: number;
-  private animationSpeed!: number;
-  private offsetX!: number;
-  private offsetY!: number;
-  private offsetW!: number;
-  private offsetH!: number;
-  private zombieType!: HTMLImageElement;
+  spriteW!: number;
+  frameY!: number;
+  spriteH!: number;
+  animationSpeed!: number;
+  offsetX!: number;
+  offsetY!: number;
+  offsetW!: number;
+  offsetH!: number;
+  zombieType!: HTMLImageElement;
 
   constructor(game: Game, x: number, y: number, w: number, h: number) {
     this.game = game;
@@ -56,34 +56,42 @@ export default class Zombie {
     this.loadSprite();
   }
 
-  private initZombieSpecs(): void {
-    this.velocity = 2;
+  initZombieSpecs(): void {
+    // Movement variables
+    this.velocity = 0.2;
     this.increment = this.velocity;
-    this.health = 150;
+
+    // Life
+    this.health = 100;
+
+    // Zombie status
     this.delete = false;
     this.attacking = false;
   }
 
-  private initZombieAnimation(): void {
+  initZombieAnimation(): void {
+    // Animation support variables
     this.startFrameX = 0;
     this.startFrameY = 0;
-    this.endFrameX = 7;
-    this.endFrameY = 2;
+    this.endFrameX = 2;
+    this.endFrameY = 4;
     this.minFrame = 0;
     this.maxFrame = 10;
     this.frameX = this.startFrameX;
     this.frameY = this.startFrameY;
-    this.spriteW = 300;
-    this.spriteH = 300;
-    this.animationSpeed = 2;
+    this.spriteW = 166;
+    this.spriteH = 144;
+    this.animationSpeed = 4;
+
+    // Offset for drawing image
     this.offsetX = -70;
     this.offsetY = -70;
     this.offsetW = 70;
     this.offsetH = 70;
   }
 
-  private loadSprite(): void {
-    this.zombieType = FootballZombieSprite;
+  loadSprite(): void {
+    this.zombieType = NormalZombieSprite;
   }
 
   public draw(): void {
@@ -111,10 +119,10 @@ export default class Zombie {
   }
 
   public attackAnimation(): void {
-    this.startFrameX = 8;
-    this.startFrameY = 2;
-    this.endFrameX = 10;
-    this.endFrameY = 5;
+    this.startFrameX = 3;
+    this.startFrameY = 4;
+    this.endFrameX = 9;
+    this.endFrameY = 7;
   }
 
   public removeZombies(): void {
@@ -139,13 +147,12 @@ export default class Zombie {
   }
 
   public dieAnimation(): void {
-    this.startFrameX = 3;
-    this.startFrameY = 9;
-    this.endFrameX = 9;
-    this.endFrameY = 10;
+    this.startFrameX = 10;
+    this.startFrameY = 7;
+    this.endFrameX = 4;
+    this.endFrameY = 11;
     this.increment = 0;
   }
-
   public loopAnimation(): void {
     if (this.game.frames % this.animationSpeed === 0) {
       if (this.frameY < this.endFrameY) {
