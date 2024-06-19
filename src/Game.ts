@@ -122,6 +122,49 @@ export class Game {
     canvas.addEventListener("mouseup", () => {
       mouseStatus.clicked = false;
     });
+
+    canvas.addEventListener("click", () => {
+      let cellPosX: number | undefined;
+      let cellPosY: number | undefined;
+      let plantCost = 25;
+
+      this.grids.every((cell) => {
+        if (isCollided(cell, mouseStatus)) {
+          cellPosX = cell.x + CELL_PAD;
+          cellPosY = cell.y + CELL_PAD;
+          return false;
+        }
+        return true;
+      });
+
+      if (
+        cellPosX === undefined ||
+        cellPosY === undefined ||
+        cellPosX < GRID_COL_START_POS ||
+        cellPosY < GRID_ROW_START_POS
+      ) {
+        return;
+      }
+
+      for (let i = 0; i < this.plants.length; i++) {
+        if (this.plants[i].x === cellPosX && this.plants[i].y === cellPosY) {
+          return;
+        }
+      }
+
+      if (plantCost <= this.sunCounts) {
+        this.plants.push(
+          new this.plantsTypes[this.selectedPlant].blueprint(
+            this,
+            cellPosX,
+            cellPosY,
+            CELL_WIDTH - 25,
+            CELL_HEIGHT - 25
+          )
+        );
+        this.sunCounts -= plantCost;
+      }
+    });
   }
 
   drawGrid() {
@@ -161,6 +204,12 @@ export class Game {
     }
   }
 
+  manageAllProjectiles() {
+    this.projectiles.forEach((projectile) => {
+      projectile.update();
+    });
+  }
+
   manageSuns() {
     if (this.frames % 300 === 0) {
       let x =
@@ -178,7 +227,16 @@ export class Game {
     });
   }
 
+  manageLawnCleaners() {
+    this.lawnCleaners.forEach((lawncleaner) => {
+      lawncleaner.update();
+    });
+  }
+
   cleanOrphanObjects() {
+    this.projectiles = this.projectiles.filter(
+      (projectile) => !projectile.delete
+    );
     this.suns = this.suns.filter((sun) => !sun.delete);
     this.zombies = this.zombies.filter((zombie) => !zombie.delete);
   }
@@ -197,10 +255,14 @@ export class Game {
     ctx.fillStyle = "black";
     ctx.drawImage(bg, 0, 0, canvas.width + 573, canvas.height);
     this.drawGrid();
+
     this.manageAllZombies();
+    this.manageAllProjectiles();
     this.showResources();
     this.manageSuns();
+    this.manageLawnCleaners();
     this.cleanOrphanObjects();
+
     this.frames++;
 
     if (gameState.current !== gameState.gameOver)
