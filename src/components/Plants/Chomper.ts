@@ -1,26 +1,9 @@
 import Plant from "./Plant.js";
-import { CELL_WIDTH, ChomperSprite } from "../../constants.js";
+import { CELL_WIDTH, chomp, ChomperSprite } from "../../constants.js";
 import Game from "../../Game.ts";
 
-// interface Game {
-//   volume: boolean;
-//   zombies: Zombie[];
-//   score: number;
-// }
-
-interface Zombie {
-  x: number;
-  y: number;
-  w: number;
-  h: number;
-  health: number;
-  hit: boolean;
-  delete: boolean;
-}
-
 export default class Chomper extends Plant {
-  static cost: number = 50;
-
+  static cost = 50;
   constructor(game: Game, x: number, y: number, w: number, h: number) {
     super(game, x, y, w, h);
   }
@@ -61,7 +44,7 @@ export default class Chomper extends Plant {
       // Stop the attacking mode after the animation is finished
       this.attackNow = false;
     } else if (this.cooldown) {
-      // If in cooldown shows the digesting animation
+      // If in cooldown shows the eating animation
       this.startFrameX = 6;
       this.startFrameY = 4;
       this.endFrameX = 10;
@@ -91,10 +74,8 @@ export default class Chomper extends Plant {
           this.frameX = 9;
           this.frameY = 3;
 
-          //   Eat the zombie
-          //   if (this.game.volume) {
-          //       chomp.play();
-          //   }
+          // Eat the zombie
+          this.game.volume && chomp.play();
           zombie.delete = true;
           // this.game.score += 10;
 
