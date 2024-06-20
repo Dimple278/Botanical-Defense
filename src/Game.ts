@@ -25,13 +25,11 @@ import {
 import { isCollided } from "./utilities/collision";
 import { initializeGrid } from "./utilities/gridUtils";
 
-import Plant, {
-  PeaShooter,
-  Repeater,
-  Sunflower,
-  ThreePeashooter,
-  Wallnut,
-} from "./components/Plant";
+import Plant from "./components/Plants/Plant";
+import PeaShooter from "./components/Plants/PeaShooter";
+import Chomper from "./components/Plants/Chomper";
+import Repeater from "./components/Plants/Repeater";
+import PotatoMines from "./components/Plants/PotatoMines";
 
 import Cell from "./components/Cell";
 import Sun from "./components/Sun";
@@ -40,7 +38,7 @@ import LawnCleaner from "./components/LawnCleaner";
 import Zombie from "./components/Zombies/Zombie";
 import FootballZombie from "./components/Zombies/FootballZombie";
 import ConeHeadZombie from "./components/Zombies/ConeHeadZombie";
-import Projectile from "./components/Projectile";
+import Projectile from "./components/Projectiles/Projectile";
 import BucketHeadZombie from "./components/Zombies/BucketZombie";
 import BallonZombie from "./components/Zombies/BalloonZombie";
 
@@ -89,13 +87,13 @@ export class Game {
     ];
 
     this.plantsTypes = [
-      { card: SunflowerCard, blueprint: Sunflower },
+      // { card: SunflowerCard, blueprint: Sunflower },
       { card: PeaShooterCard, blueprint: PeaShooter },
       { card: RepeaterCard, blueprint: Repeater },
-      { card: ThreePeaShooterCard, blueprint: ThreePeashooter },
-      // { card: ChomperCard, blueprint: Chomper },
-      { card: WallNutCard, blueprint: Wallnut },
-      // { card: PotatoMinesCard, blueprint: PotatoMines },
+      // { card: ThreePeaShooterCard, blueprint: ThreePeashooter },
+      { card: ChomperCard, blueprint: Chomper },
+      // { card: WallNutCard, blueprint: Wallnut },
+      { card: PotatoMinesCard, blueprint: PotatoMines },
       //   { card: SpikeweedCard, blueprint: Spikeweed },
       //   { card: MelonPultCard, blueprint: MelonPult },
     ];
