@@ -8,20 +8,12 @@ import {
   CELL_WIDTH,
   CELL_HEIGHT,
   GRID_ROW_START_POS,
-  //   peaShoot,
+  peaShoot,
   ThreepeaShooterSprite,
 } from "../../constants.js";
 
 import { isCollided } from "../../utilities/collision.ts";
 import Game from "../../Game.ts";
-
-// interface Game {
-//   frames: number;
-//   volume: boolean;
-//   projectiles: (Projectile | UpProjectile | DownProjectile)[];
-//   zombiesPositions: number[];
-//   zombies: any[];
-// }
 
 export default class ThreePeaShooter extends Plant {
   static cost: number = 100;
@@ -67,9 +59,7 @@ export default class ThreePeaShooter extends Plant {
       this.frameY === 1
     ) {
       this.attackNow = false;
-      //   if (this.game.volume) {
-      //     peaShoot.play();
-      //   }
+      this.game.volume && peaShoot.play();
 
       // Middle projectile
       this.game.projectiles.push(
@@ -136,7 +126,6 @@ export default class ThreePeaShooter extends Plant {
         if (isCollided(this, zombie)) {
           zombie.increment = zombie.velocity;
           zombie.attacking = false;
-          // Assuming `initZombieAnimation()` exists on zombie object
           zombie.initZombieAnimation();
         }
       });

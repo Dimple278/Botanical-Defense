@@ -1,6 +1,6 @@
 import Plant from "./Plant.js";
 import Projectile from "../Projectiles/Projectile.ts";
-import { CELL_WIDTH, RepeaterSprite } from "../../constants.js";
+import { CELL_WIDTH, peaShoot, RepeaterSprite } from "../../constants.js";
 import Game from "../../Game.ts";
 
 // interface Game {
@@ -58,9 +58,7 @@ export default class Repeater extends Plant {
     ) {
       this.attackNow = false;
 
-      //   if (this.game.volume) {
-      //     peaShoot.play();
-      //   }
+      this.game.volume && peaShoot.play();
       this.game.projectiles.push(
         new Projectile(
           this.game,
@@ -71,9 +69,7 @@ export default class Repeater extends Plant {
         )
       );
 
-      //   if (this.game.volume) {
-      //     peaShoot.play();
-      //   }
+      this.game.volume && peaShoot.play();
       this.game.projectiles.push(
         new Projectile(
           this.game,
