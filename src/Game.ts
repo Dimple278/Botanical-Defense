@@ -31,6 +31,8 @@ import Chomper from "./components/Plants/Chomper";
 import Repeater from "./components/Plants/Repeater";
 import PotatoMines from "./components/Plants/PotatoMines";
 import ThreePeaShooter from "./components/Plants/ThreePeaShooter";
+import Spikeweed from "./components/Plants/SpikeWeed";
+import WallNut from "./components/Plants/Wallnut";
 
 import Cell from "./components/Cell";
 import Sun from "./components/Sun";
@@ -93,9 +95,9 @@ export class Game {
       { card: RepeaterCard, blueprint: Repeater },
       { card: ThreePeaShooterCard, blueprint: ThreePeaShooter },
       { card: ChomperCard, blueprint: Chomper },
-      // { card: WallNutCard, blueprint: Wallnut },
+      { card: WallNutCard, blueprint: WallNut },
       { card: PotatoMinesCard, blueprint: PotatoMines },
-      //   { card: SpikeweedCard, blueprint: Spikeweed },
+      { card: SpikeweedCard, blueprint: Spikeweed },
       //   { card: MelonPultCard, blueprint: MelonPult },
     ];
 
