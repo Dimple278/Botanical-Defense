@@ -41,7 +41,7 @@ export default class Chomper extends Plant {
 
     // Offset for drawing image
     this.offsetX = 0;
-    this.offsety = 30;
+    this.offsetY = 30;
     this.offsetW = 50;
     this.offsetH = 50;
   }

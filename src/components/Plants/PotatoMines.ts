@@ -34,7 +34,7 @@ export default class PotatoMines extends Plant {
 
     // Offset for drawing image
     this.offsetX = 0;
-    this.offsety = -75;
+    this.offsetY = -75;
     this.offsetW = 100;
     this.offsetH = 0;
   }
@@ -64,7 +64,7 @@ export default class PotatoMines extends Plant {
       this.startFrameY = 1;
       this.endFrameX = 0;
       this.endFrameY = 1;
-      this.offsety = 20;
+      this.offsetY = 20;
       setTimeout(() => {
         this.health = 0;
       }, 200);

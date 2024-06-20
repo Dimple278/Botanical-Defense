@@ -1,14 +1,15 @@
 import Plant from "./Plant.js";
 import Projectile from "../Projectiles/Projectile.ts";
 import { CELL_WIDTH, RepeaterSprite } from "../../constants.js";
+import Game from "../../Game.ts";
 
-interface Game {
-  frames: number;
-  volume: boolean;
-  projectiles: Projectile[];
-  zombies: any[];
-  zombiesPositions: number[];
-}
+// interface Game {
+//   frames: number;
+//   volume: boolean;
+//   projectiles: Projectile[];
+//   zombies: any[];
+//   zombiesPositions: number[];
+// }
 
 export default class Repeater extends Plant {
   static cost: number = 40;
@@ -33,7 +34,7 @@ export default class Repeater extends Plant {
 
     // Offset for drawing image
     this.offsetX = -15;
-    this.offsety = -15;
+    this.offsetY = -15;
     this.offsetW = -15;
     this.offsetH = -15;
   }

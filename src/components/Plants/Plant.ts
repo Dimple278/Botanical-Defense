@@ -32,7 +32,7 @@ export default class Plant {
   spriteH: number = 71;
   animationSpeed: number = 3;
   offsetX: number = -15;
-  offsety: number = -15;
+  offsetY: number = -15;
   offsetW: number = -15;
   offsetH: number = -15;
   plantType: HTMLImageElement = PeaShooterSprite;
@@ -72,7 +72,7 @@ export default class Plant {
     this.spriteH = 71;
     this.animationSpeed = 3;
     this.offsetX = -15;
-    this.offsety = -15;
+    this.offsetY = -15;
     this.offsetW = -15;
     this.offsetH = -15;
   }
@@ -94,7 +94,7 @@ export default class Plant {
       this.spriteW,
       this.spriteH,
       this.x - this.offsetX,
-      this.y - this.offsety,
+      this.y - this.offsetY,
       this.w + this.offsetW,
       this.h + this.offsetH
     );

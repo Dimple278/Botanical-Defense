@@ -46,7 +46,7 @@ export default class ThreePeaShooter extends Plant {
 
     // Offset for drawing image
     this.offsetX = 0;
-    this.offsety = 0;
+    this.offsetY = 0;
     this.offsetW = 0;
     this.offsetH = 0;
   }

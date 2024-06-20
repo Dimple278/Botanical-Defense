@@ -3,6 +3,14 @@ import { CELL_WIDTH } from "../../constants.js";
 import Projectile from "../Projectiles/Projectile.ts";
 import Game from "../../Game.ts";
 
+// interface Game {
+//   frames: number;
+//   volume: boolean;
+//   projectiles: Projectile[];
+//   zombies: any[];
+//   zombiesPositions: number[];
+// }
+
 export default class PeaShooter extends Plant {
   static cost: number = 25;
 
