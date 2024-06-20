@@ -1,21 +1,12 @@
-import { CELL_WIDTH, ctx, normalBullet, canvas } from "../../constants.js";
+import {
+  CELL_WIDTH,
+  ctx,
+  normalBullet,
+  canvas,
+  peaHit,
+} from "../../constants.js";
 import { isCollided } from "../../utilities/collision.ts";
-// import Game from "../../Game.ts";
-
-interface Game {
-  frames: number;
-  // volume: boolean;
-  zombies: Zombie[];
-}
-
-interface Zombie {
-  x: number;
-  y: number;
-  w: number;
-  h: number;
-  health: number;
-  hit: boolean;
-}
+import Game from "../../Game.ts";
 
 export default class Projectile {
   game: Game;
@@ -43,9 +34,7 @@ export default class Projectile {
   checkCollision() {
     this.game.zombies.every((zombie) => {
       if (isCollided(this, zombie)) {
-        // if (this.game.volume) {
-        //   peaHit.play();
-        // }
+        this.game.volume && peaHit.play();
         zombie.health -= this.damage;
         zombie.hit = true;
         this.delete = true;

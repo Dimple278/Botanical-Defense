@@ -1,6 +1,6 @@
 import {
   CELL_WIDTH,
-  // peaHit,
+  peaHit,
   canvas,
   CELL_HEIGHT,
   melonBullet,
@@ -69,7 +69,7 @@ export default class ParabolicProjectile extends Projectile {
 
   // Find the target zombie based on projectile's initial y position
   getTarget(): void {
-    this.game.zombies.every((zombie) => {
+    this.game.zombies.every((zombie: Zombie) => {
       if (this.y >= zombie.y && this.y <= zombie.y + (CELL_HEIGHT - 100)) {
         this.target = zombie; // Set target zombie
         return false; // Stop iteration
@@ -80,10 +80,10 @@ export default class ParabolicProjectile extends Projectile {
 
   // Check collision with zombies and handle damage
   checkCollision(): void {
-    this.game.zombies.every((zombie) => {
+    this.game.zombies.every((zombie: Zombie) => {
       if (this.temp === zombie.y && isCollided(this, zombie)) {
         // If projectile collides with a zombie
-        // this.game.volume && peaHit.play();
+        this.game.volume && peaHit.play();
         zombie.health -= this.damage;
         zombie.hit = true;
         this.delete = true;
