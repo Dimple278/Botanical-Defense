@@ -21,8 +21,10 @@ import {
   SunflowerCard,
   LAWN_CLEANER_WIDTH,
 } from "./constants";
+
 import { isCollided } from "./utilities/collision";
 import { initializeGrid } from "./utilities/gridUtils";
+
 import Plant, {
   PeaShooter,
   Repeater,
@@ -30,9 +32,11 @@ import Plant, {
   ThreePeashooter,
   Wallnut,
 } from "./components/Plant";
+
 import Cell from "./components/Cell";
 import Sun from "./components/Sun";
 import LawnCleaner from "./components/LawnCleaner";
+
 import Zombie from "./components/Zombies/Zombie";
 import FootballZombie from "./components/Zombies/FootballZombie";
 import ConeHeadZombie from "./components/Zombies/ConeHeadZombie";
@@ -54,6 +58,7 @@ export class Game {
   selectedPlant: number;
   frames: number;
   zombiesTypes: (typeof Zombie)[];
+  plantsTypes: { card: HTMLImageElement; blueprint: typeof Plant }[];
   score: number;
   volume: boolean;
 
@@ -81,6 +86,18 @@ export class Game {
       ConeHeadZombie,
       BucketHeadZombie,
       BallonZombie,
+    ];
+
+    this.plantsTypes = [
+      { card: SunflowerCard, blueprint: Sunflower },
+      { card: PeaShooterCard, blueprint: PeaShooter },
+      { card: RepeaterCard, blueprint: Repeater },
+      { card: ThreePeaShooterCard, blueprint: ThreePeashooter },
+      // { card: ChomperCard, blueprint: Chomper },
+      { card: WallNutCard, blueprint: Wallnut },
+      // { card: PotatoMinesCard, blueprint: PotatoMines },
+      //   { card: SpikeweedCard, blueprint: Spikeweed },
+      //   { card: MelonPultCard, blueprint: MelonPult },
     ];
 
     for (
@@ -173,6 +190,13 @@ export class Game {
     });
   }
 
+  manageAllPlants() {
+    this.plants.forEach((plant) => {
+      plant.update();
+    });
+    this.plants = this.plants.filter((plant) => plant.health > 0);
+  }
+
   manageAllZombies() {
     this.zombies.forEach((zombie) => {
       zombie.update();
@@ -251,18 +275,46 @@ export class Game {
     ctx.fillText(this.sunCounts.toString(), 79, 48);
   }
 
+  showCards() {
+    this.plantsTypes.forEach((plant, idx) => {
+      let cardBoundary = {
+        x: 20,
+        y: GRID_ROW_START_POS + 80 * idx,
+        w: 100,
+        h: 60,
+      };
+      let cardY = GRID_ROW_START_POS + 80 * idx;
+
+      ctx.drawImage(
+        plant.card,
+        0,
+        0,
+        cardBoundary.w,
+        cardBoundary.h,
+        cardBoundary.x,
+        cardY,
+        idx === this.selectedPlant ? cardBoundary.w + 15 : cardBoundary.w,
+        idx === this.selectedPlant ? cardBoundary.h + 8 : cardBoundary.h
+      );
+
+      if (isCollided(mouseStatus, cardBoundary) && mouseStatus.clicked) {
+        this.selectedPlant = idx;
+      }
+    });
+  }
+
   animate = () => {
     ctx.fillStyle = "black";
     ctx.drawImage(bg, 0, 0, canvas.width + 573, canvas.height);
     this.drawGrid();
-
+    this.manageAllPlants();
     this.manageAllZombies();
     this.manageAllProjectiles();
     this.showResources();
     this.manageSuns();
     this.manageLawnCleaners();
     this.cleanOrphanObjects();
-
+    this.showCards();
     this.frames++;
 
     if (gameState.current !== gameState.gameOver)
