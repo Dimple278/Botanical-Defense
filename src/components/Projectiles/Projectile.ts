@@ -1,5 +1,6 @@
 import { CELL_WIDTH, ctx, normalBullet, canvas } from "../../constants.js";
 import { isCollided } from "../../utilities/collision.ts";
+// import Game from "../../Game.ts";
 
 interface Game {
   // volume: boolean;
