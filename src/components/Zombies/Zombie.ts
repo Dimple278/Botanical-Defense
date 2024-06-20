@@ -58,7 +58,7 @@ export default class Zombie {
 
   initZombieSpecs(): void {
     // Movement variables
-    this.velocity = 0.2;
+    this.velocity = 0.3;
     this.increment = this.velocity;
 
     // Life

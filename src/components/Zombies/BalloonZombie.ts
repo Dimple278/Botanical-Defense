@@ -1,6 +1,6 @@
 import { BallonZombieSprite } from "../../constants";
 import FootballZombie from "./FootballZombie";
-import { Game } from "../../Game1.ts";
+import { Game } from "../../Game.ts";
 
 export default class BallonZombie extends FootballZombie {
   drop: boolean;

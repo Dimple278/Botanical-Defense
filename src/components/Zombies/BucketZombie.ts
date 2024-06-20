@@ -1,6 +1,6 @@
 import { BucketHeadZombieSprite } from "../../constants";
 import Zombie from "./Zombie";
-import { Game } from "../../Game1.ts";
+import { Game } from "../../Game.ts";
 
 export default class BucketZombie extends Zombie {
   constructor(game: Game, x: number, y: number, w: number, h: number) {
