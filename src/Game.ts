@@ -33,6 +33,7 @@ import PotatoMines from "./components/Plants/PotatoMines";
 import ThreePeaShooter from "./components/Plants/ThreePeaShooter";
 import Spikeweed from "./components/Plants/SpikeWeed";
 import WallNut from "./components/Plants/Wallnut";
+import MelonPult from "./components/Plants/Melon";
 
 import Cell from "./components/Cell";
 import Sun from "./components/Sun";
@@ -98,7 +99,7 @@ export class Game {
       { card: WallNutCard, blueprint: WallNut },
       { card: PotatoMinesCard, blueprint: PotatoMines },
       { card: SpikeweedCard, blueprint: Spikeweed },
-      //   { card: MelonPultCard, blueprint: MelonPult },
+      { card: MelonPultCard, blueprint: MelonPult },
     ];
 
     for (

@@ -139,7 +139,7 @@ export const loadImages = async () => {
     WallnutSprite = await getImage(
       "/assets/images/Plants/WallNutSprite_65x73.png"
     );
-    MelonpultSprite = await getImage("/assets/images/Plants/melon_pult.png");
+    MelonpultSprite = await getImage("/assets/images/Plants/watermelon.png");
 
     bg = await getImage("/assets/images/Interface/background1.jpg");
     ThreePeaShooterCard = await getImage(

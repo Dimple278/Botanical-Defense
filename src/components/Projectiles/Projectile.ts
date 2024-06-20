@@ -3,6 +3,7 @@ import { isCollided } from "../../utilities/collision.ts";
 // import Game from "../../Game.ts";
 
 interface Game {
+  frames: number;
   // volume: boolean;
   zombies: Zombie[];
 }
