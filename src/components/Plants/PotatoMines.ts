@@ -82,7 +82,7 @@ export default class PotatoMines extends Plant {
           )
         ) {
           zombie.delete = true;
-          //   this.game.score += 10;
+          this.game.score += 10;
         }
       });
     }

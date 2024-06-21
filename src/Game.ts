@@ -20,6 +20,7 @@ import {
   SpikeweedCard,
   SunflowerCard,
   LAWN_CLEANER_WIDTH,
+  Button,
 } from "./constants";
 
 import { isCollided } from "./utilities/collision";
@@ -34,6 +35,7 @@ import ThreePeaShooter from "./components/Plants/ThreePeaShooter";
 import Spikeweed from "./components/Plants/SpikeWeed";
 import WallNut from "./components/Plants/Wallnut";
 import MelonPult from "./components/Plants/Melon";
+import Sunflower from "./components/Plants/Sunflower";
 
 import Cell from "./components/Cell";
 import Sun from "./components/Sun";
@@ -91,7 +93,7 @@ export class Game {
     ];
 
     this.plantsTypes = [
-      // { card: SunflowerCard, blueprint: Sunflower },
+      { card: SunflowerCard, blueprint: Sunflower },
       { card: PeaShooterCard, blueprint: PeaShooter },
       { card: RepeaterCard, blueprint: Repeater },
       { card: ThreePeaShooterCard, blueprint: ThreePeaShooter },
@@ -275,6 +277,10 @@ export class Game {
       ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 2);
     }
     ctx.fillText(this.sunCounts.toString(), 79, 48);
+
+    ctx.fillStyle = "#ffe9ac";
+    ctx.drawImage(Button, 20, 70, 135, 50);
+    ctx.fillText(`Score ${this.score}`, 39, 101);
   }
 
   showCards() {

@@ -77,7 +77,7 @@ export default class Chomper extends Plant {
           // Eat the zombie
           this.game.volume && chomp.play();
           zombie.delete = true;
-          // this.game.score += 10;
+          this.game.score += 10;
 
           // Give a cooldown of 10 sec before it can eat again and
           // reset the animation frame
