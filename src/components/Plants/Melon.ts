@@ -1,11 +1,11 @@
-import Plant from "./Plant"; // Adjust path as per your project structure
+import Plant from "./Plant";
 import ParabolicProjectile from "../Projectiles/ParabolicProjectile";
-import { MelonpultSprite } from "../../constants"; // Adjust path as per your project structure
+import { MelonpultSprite } from "../../constants";
 import Game from "../../Game";
 
 export default class MelonPult extends Plant {
   static cost: number = 50;
-  cooldown: number = 0;
+  cooldownCounter: number = 0;
 
   constructor(game: Game, x: number, y: number, w: number, h: number) {
     super(game, x, y, w, h);
@@ -42,14 +42,14 @@ export default class MelonPult extends Plant {
   // Attacks by launching a parabolic projectile
   attack(): void {
     if (this.attacking) {
-      this.cooldown++;
-      if (this.cooldown % 100 === 0) {
+      this.cooldownCounter++;
+      if (this.cooldownCounter % 100 === 0) {
         this.game.projectiles.push(
           new ParabolicProjectile(this.game, this.x, this.y, 62, 55)
         );
       }
     } else {
-      this.cooldown = 0;
+      this.cooldownCounter = 0;
     }
   }
 }

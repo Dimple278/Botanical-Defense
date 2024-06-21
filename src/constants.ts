@@ -85,11 +85,24 @@ export let musicImg: HTMLImageElement;
 // Sound icons
 export let volumeImg: HTMLImageElement;
 
+// Audios
+export let introTheme = new Audio();
+export let theme = new Audio();
+export let chomp = new Audio();
+export let bucketZombieFall = new Audio();
+export let zombieFall = new Audio();
+export let plantation = new Audio();
+export let hoverSound = new Audio();
+export let select = new Audio();
+export let peaShoot = new Audio();
+export let peaHit = new Audio();
+export let clickSound = new Audio();
+
 // Extras
 export let sunImg: HTMLImageElement;
 export let resourcescard: HTMLImageElement;
 export let LawnCleanerImg: HTMLImageElement;
-export let Button: HTMLElement;
+export let Button: HTMLImageElement;
 
 // Loads all the images
 export const loadImages = async () => {
@@ -171,17 +184,18 @@ export const loadImages = async () => {
     musicImg = await getImage("/assets/images/Interface/music.png");
     volumeImg = await getImage("/assets/images/Interface/volume.png");
 
-    // select.src = "assets/audio/click.mp3";
-    // // hoverSound.src = "assets/audio/hover.mp3";
-    // plantation.src = "assets/audio/plantation.mp3";
-    // peaShoot.src = "assets/audio/pea_shoot.mp3";
-    // bucketZombieFall.src = "assets/audio/bucket_zombie_fall.mp3";
-    // zombieFall.src = "assets/audio/zombie_fall.mp3";
-    // introTheme.src = "assets/audio/introTheme.mp3";
-    // theme.src = "assets/audio/theme.mp3";
-    // chomp.src = "assets/audio/chomp.mp3";
-    // peaHit.src = "assets/audio/pea_hit.mp3";
-    // clickSound.src = "assets/audio/click.mp3";
+    //Audios
+    select.src = "assets/audio/click.mp3";
+    hoverSound.src = "assets/audio/hover.mp3";
+    plantation.src = "assets/audio/plantation.mp3";
+    peaShoot.src = "assets/audio/pea_shoot.mp3";
+    bucketZombieFall.src = "assets/audio/bucket_zombie_fall.mp3";
+    zombieFall.src = "assets/audio/zombie_fall.mp3";
+    introTheme.src = "assets/audio/introTheme.mp3";
+    theme.src = "assets/audio/theme.mp3";
+    chomp.src = "assets/audio/chomp.mp3";
+    peaHit.src = "assets/audio/pea_hit.mp3";
+    clickSound.src = "assets/audio/click.mp3";
   } catch (error) {
     console.log("error ocurred while loading image", error);
   }

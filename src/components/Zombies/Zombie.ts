@@ -2,15 +2,10 @@ import {
   CELL_PAD,
   ctx,
   NormalZombieSprite,
-  // zombieFall,
+  zombieFall,
 } from "../../constants.ts";
 
-interface Game {
-  zombiesPositions: number[];
-  score: number;
-  frames: number;
-  volume: boolean;
-}
+import Game from "../../Game.ts";
 
 export default class Zombie {
   game: Game;
@@ -95,7 +90,6 @@ export default class Zombie {
   }
 
   public draw(): void {
-    console.log("drawing");
     if (this.hit) {
       ctx.globalAlpha = 0.6;
     }
@@ -180,7 +174,7 @@ export default class Zombie {
       this.attackAnimation();
     }
     if (this.die) {
-      // this.game.volume && zombieFall.play();
+      this.game.volume && zombieFall.play();
       this.dieAnimation();
       this.checkFrames();
       this.removeZombies();

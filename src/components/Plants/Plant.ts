@@ -1,12 +1,6 @@
 import { CELL_PAD, ctx, PeaShooterSprite } from "../../constants.ts";
 import { isCollided } from "../../utilities/collision.ts";
-
-interface Game {
-  projectiles: any;
-  frames: number;
-  zombies: any[];
-  zombiesPositions: number[];
-}
+import Game from "../../Game.ts";
 
 export default class Plant {
   game: Game;
@@ -55,6 +49,7 @@ export default class Plant {
     this.bulletW = 60;
     this.bulletH = 40;
     this.attacking = false;
+    this.cooldown = false;
     this.cooldown = false;
   }
 
