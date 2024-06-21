@@ -77,7 +77,7 @@ export let SpikeweedCard: HTMLImageElement;
 
 // Shovel
 export let ShovelImg: HTMLImageElement;
-export let ShovelBtn: HTMLElement;
+export let ShovelBtn: HTMLImageElement;
 
 // Music icons
 export let musicImg: HTMLImageElement;

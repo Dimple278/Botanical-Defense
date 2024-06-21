@@ -59,7 +59,11 @@ export class Game {
   frames: number;
   shovelSelected: boolean;
   zombiesTypes: (typeof Zombie)[];
-  plantsTypes: { card: HTMLImageElement; blueprint: typeof Plant }[];
+  plantsTypes: {
+    canPlant: boolean;
+    card: HTMLImageElement;
+    blueprint: typeof Plant;
+  }[];
   score: number;
   volume: boolean;
   music: boolean;
@@ -87,6 +91,7 @@ export class Game {
     this.shovelSelected = false;
     this.music = true;
     this.volume = true;
+    this.selectedPlantHoverImg = undefined;
 
     this.zombiesTypes = [
       Zombie,
@@ -97,15 +102,51 @@ export class Game {
     ];
 
     this.plantsTypes = [
-      { card: SunflowerCard, blueprint: Sunflower },
-      { card: PeaShooterCard, blueprint: PeaShooter },
-      { card: RepeaterCard, blueprint: Repeater },
-      { card: ThreePeaShooterCard, blueprint: ThreePeaShooter },
-      { card: ChomperCard, blueprint: Chomper },
-      { card: WallNutCard, blueprint: WallNut },
-      { card: PotatoMinesCard, blueprint: PotatoMines },
-      { card: SpikeweedCard, blueprint: Spikeweed },
-      { card: MelonPultCard, blueprint: MelonPult },
+      {
+        card: SunflowerCard,
+        blueprint: Sunflower,
+        canPlant: true,
+      },
+      {
+        card: PeaShooterCard,
+        blueprint: PeaShooter,
+        canPlant: true,
+      },
+      {
+        card: RepeaterCard,
+        blueprint: Repeater,
+        canPlant: true,
+      },
+      {
+        card: ThreePeaShooterCard,
+        blueprint: ThreePeaShooter,
+        canPlant: true,
+      },
+      {
+        card: ChomperCard,
+        blueprint: Chomper,
+        canPlant: true,
+      },
+      {
+        card: WallNutCard,
+        blueprint: WallNut,
+        canPlant: true,
+      },
+      {
+        card: PotatoMinesCard,
+        blueprint: PotatoMines,
+        canPlant: true,
+      },
+      {
+        card: SpikeweedCard,
+        blueprint: Spikeweed,
+        canPlant: true,
+      },
+      {
+        card: MelonPultCard,
+        blueprint: MelonPult,
+        canPlant: true,
+      },
     ];
 
     this.shovelBoundary = {

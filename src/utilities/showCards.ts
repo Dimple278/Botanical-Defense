@@ -1,4 +1,3 @@
-// showCards.ts
 import {
   ctx,
   GRID_ROW_START_POS,
@@ -22,7 +21,7 @@ export function showCards(game: Game) {
     ctx.drawImage(
       plant.card,
       0,
-      0,
+      plant.canPlant || idx === 8 ? 1 : 61,
       cardBoundary.w,
       cardBoundary.h,
       cardBoundary.x,
