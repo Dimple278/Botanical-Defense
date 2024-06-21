@@ -1,29 +1,20 @@
-// Game.ts
 import {
   canvas,
   ctx,
-  CELL_WIDTH,
   CELL_HEIGHT,
-  bg,
-  GRID_COL_START_POS,
   GRID_ROW_START_POS,
-  gameState,
-  CELL_PAD,
   PeaShooterCard,
   ThreePeaShooterCard,
   RepeaterCard,
   ChomperCard,
   WallNutCard,
   PotatoMinesCard,
-  resourcescard,
   MelonPultCard,
   SpikeweedCard,
   SunflowerCard,
   LAWN_CLEANER_WIDTH,
-  Button,
 } from "./constants";
 
-import { isCollided } from "./utilities/collision";
 import { initializeGrid } from "./utilities/gridUtils";
 
 import Plant from "./components/Plants/Plant";
@@ -50,16 +41,6 @@ import BallonZombie from "./components/Zombies/BalloonZombie";
 
 import { animate } from "./animate";
 import { addListeners } from "./addListeners";
-import {
-  manageAllPlants,
-  manageAllZombies,
-  manageAllProjectiles,
-  manageSuns,
-  manageLawnCleaners,
-} from "./managers";
-import { cleanOrphanObjects } from "./utilities/cleanOrphanObjects";
-import { showResources } from "./utilities/showResources";
-import { showCards } from "./utilities/showCards";
 
 export class Game {
   canvasPosition: DOMRect;
@@ -72,12 +53,19 @@ export class Game {
   sunCounts: number;
   zombiesSpawnRate: number;
   zombiesPositions: number[];
+  plantCooldownTime: number;
   selectedPlant: number;
+  selectedPlantHoverImg: HTMLImageElement | undefined;
   frames: number;
+  shovelSelected: boolean;
   zombiesTypes: (typeof Zombie)[];
   plantsTypes: { card: HTMLImageElement; blueprint: typeof Plant }[];
   score: number;
   volume: boolean;
+  music: boolean;
+  shovelBoundary: { x: number; y: number; w: number; h: number };
+  musicBoundary: { x: number; y: number; w: number; h: number };
+  volumeBoudnary: { x: number; y: number; w: number; h: number };
 
   constructor() {
     this.canvasPosition = canvas.getBoundingClientRect();
@@ -95,6 +83,9 @@ export class Game {
     this.selectedPlant = 0;
     this.frames = 0;
     this.score = 0;
+    this.plantCooldownTime = 5000;
+    this.shovelSelected = false;
+    this.music = true;
     this.volume = true;
 
     this.zombiesTypes = [
@@ -116,6 +107,26 @@ export class Game {
       { card: SpikeweedCard, blueprint: Spikeweed },
       { card: MelonPultCard, blueprint: MelonPult },
     ];
+
+    this.shovelBoundary = {
+      x: 200,
+      y: 15,
+      w: 85,
+      h: 85,
+    };
+    this.musicBoundary = {
+      x: canvas.width - 300,
+      y: 15,
+      w: 40,
+      h: 40,
+    };
+
+    this.volumeBoudnary = {
+      x: canvas.width - 350,
+      y: 15,
+      w: 40,
+      h: 40,
+    };
 
     for (
       let row = GRID_ROW_START_POS;
