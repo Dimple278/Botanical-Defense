@@ -13,6 +13,8 @@ import {
   SpikeweedCard,
   SunflowerCard,
   LAWN_CLEANER_WIDTH,
+  theme,
+  gameState,
 } from "./constants";
 
 import { initializeGrid } from "./utilities/gridUtils";
@@ -70,9 +72,26 @@ export class Game {
   shovelBoundary: { x: number; y: number; w: number; h: number };
   musicBoundary: { x: number; y: number; w: number; h: number };
   volumeBoudnary: { x: number; y: number; w: number; h: number };
+  animationId: number | undefined;
+
+  // startMenu: HTMLElement | null;
+  startBtn: HTMLElement;
+  endMenu: HTMLElement | null;
+  restartBtn: HTMLElement;
+  endScore: HTMLElement | null;
 
   constructor() {
     this.canvasPosition = canvas.getBoundingClientRect();
+    this.animationId = undefined;
+
+    // Get dom elements
+    // this.startMenu = document.querySelector(".start-menu");
+    this.startBtn = document.getElementById("start-button") as HTMLDivElement;
+    this.endMenu = document.querySelector(".end-menu");
+    this.restartBtn = document.getElementById(
+      "restart-button"
+    ) as HTMLDivElement;
+    this.endScore = document.querySelector(".end-menu__score");
 
     this.grids = [];
     this.zombies = [];
@@ -195,13 +214,32 @@ export class Game {
       gridCell.draw(ctx);
     });
   }
+  // Resets all the varibales to initial value for reset
+  reset() {
+    this.zombies = [];
+    this.suns = [];
+    this.projectiles = [];
+    this.plants = [];
+    this.lawnCleaners = [];
+    this.grids = [];
+
+    this.frames = 1;
+    this.score = 0;
+    this.sunCounts = 125;
+
+    console.log("music is ", this.music);
+    console.log("theme is ", theme);
+    this.music ? theme.play() : theme.pause();
+    gameState.current = gameState.gamePlaying;
+    // window.cancelAnimationFrame(this.animationId);
+  }
 
   animate = animate(this);
 
   init() {
     this.grids = initializeGrid(Cell);
     this.addListeners();
-    this.animate();
+    // this.animate();
   }
 }
 

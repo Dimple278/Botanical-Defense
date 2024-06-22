@@ -7,13 +7,25 @@ import {
   CELL_WIDTH,
   CELL_HEIGHT,
   clickSound,
+  theme,
+  gameState,
 } from "./constants";
 import { isCollided } from "./utilities/collision";
 import { Game } from "./Game";
+const startPage = document.getElementById("start-page") as HTMLDivElement;
 
 export function addListeners(game: Game) {
   window.addEventListener("resize", () => {
     game.canvasPosition = canvas.getBoundingClientRect();
+  });
+
+  game.startBtn.addEventListener("click", () => {
+    startPage.style.visibility = "hidden";
+    theme.play();
+    theme.volume = 0.3;
+    theme.loop = true;
+    // game.init();
+    game.animate();
   });
 
   canvas.addEventListener("mousemove", (e) => {
