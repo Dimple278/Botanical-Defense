@@ -114,9 +114,9 @@ export class Game {
 
     this.zombiesTypes = [
       Zombie,
-      FootballZombie,
       ConeHeadZombie,
       BucketHeadZombie,
+      FootballZombie,
       BallonZombie,
     ];
 

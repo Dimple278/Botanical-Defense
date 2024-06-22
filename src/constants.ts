@@ -15,15 +15,15 @@ export const loading = document.querySelector(".loading");
 export const startMenuBtn = document.querySelector(".start-menu__btn");
 
 // Required Variables
-// export const CELL_WIDTH = 140;
-// export const CELL_HEIGHT = 155;
-export const CELL_WIDTH = canvas.width / 13.57;
-export const CELL_HEIGHT = canvas.height / 6.26;
-export const GRID_COL_START_POS = canvas.width * 0.24;
-export const GRID_ROW_START_POS = canvas.height * 0.14;
+export const CELL_WIDTH = 140;
+export const CELL_HEIGHT = 155;
+// export const CELL_WIDTH = canvas.width / 13.57;
+// export const CELL_HEIGHT = canvas.height / 6.26;
+// export const GRID_COL_START_POS = canvas.width * 0.24;
+// export const GRID_ROW_START_POS = canvas.height * 0.14;
 export const CELL_PAD = 4;
-// export const GRID_COL_START_POS = 455;
-// export const GRID_ROW_START_POS = 140;
+export const GRID_COL_START_POS = 455;
+export const GRID_ROW_START_POS = 140;
 export const LAWN_CLEANER_WIDTH = 80;
 export const PROJECTILES = [];
 
