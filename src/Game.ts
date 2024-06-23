@@ -45,6 +45,7 @@ import BallonZombie from "./components/Zombies/BalloonZombie";
 import { animate } from "./animate";
 import { addListeners } from "./addListeners";
 import { FloatingMsg } from "./FloatingMessage";
+import { getHighScore } from "./utilities/highScore";
 
 export class Game {
   canvasPosition: DOMRect;
@@ -82,6 +83,7 @@ export class Game {
   endMenu: HTMLElement | null;
   restartBtn: HTMLElement;
   endScore: HTMLElement | null;
+  highScore: number;
 
   constructor() {
     this.canvasPosition = canvas.getBoundingClientRect();
@@ -104,12 +106,13 @@ export class Game {
     this.lawnCleaners = [];
 
     this.floatingMsgs = [];
-    this.sunCounts = 200;
+    this.sunCounts = 125;
     this.zombiesSpawnRate = 200;
     this.zombiesPositions = [];
     this.selectedPlant = 0;
     this.frames = 0;
     this.score = 0;
+    this.highScore = getHighScore();
     this.plantCooldownTime = 5000;
     this.shovelSelected = false;
     this.music = true;
