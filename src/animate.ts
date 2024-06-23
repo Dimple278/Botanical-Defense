@@ -15,6 +15,7 @@ import { showResources } from "./utilities/showResources";
 import { showCards } from "./utilities/showCards";
 import { handleMusic } from "./handlers/audio handlers/musicHandler";
 import { handleVolume } from "./handlers/audio handlers/volumeHandler";
+import { handleFloatingMessages } from "./handlers/floatingMsgHandler";
 const endPage = document.getElementById("end-page") as HTMLDivElement;
 
 export function animate(game: Game) {
@@ -34,6 +35,7 @@ export function animate(game: Game) {
     handleShovel(game);
     handleMusic(game);
     handleVolume(game);
+    handleFloatingMessages(game);
     game.frames++;
 
     if (gameState.current !== gameState.gameOver)

@@ -23,36 +23,36 @@ export function handleAllPlants(game: Game) {
   game.plants = game.plants.filter((plant) => plant.health > 0);
 }
 
-export function handleAllZombies(game: Game) {
-  game.zombies.forEach((zombie) => {
-    zombie.update();
-    if (zombie.x < GRID_COL_START_POS - LAWN_CLEANER_WIDTH) {
-      gameState.current = gameState.gameOver;
-    }
-    if (zombie.health <= 0) {
-      zombie.die = true;
-      zombie.attacking = false;
-    }
-  });
+// export function handleAllZombies(game: Game) {
+//   game.zombies.forEach((zombie) => {
+//     zombie.update();
+//     if (zombie.x < GRID_COL_START_POS - LAWN_CLEANER_WIDTH) {
+//       gameState.current = gameState.gameOver;
+//     }
+//     if (zombie.health <= 0) {
+//       zombie.die = true;
+//       zombie.attacking = false;
+//     }
+//   });
 
-  let selectedRow =
-    Math.floor(Math.random() * 5) * CELL_HEIGHT + GRID_ROW_START_POS + CELL_PAD;
+//   let selectedRow =
+//     Math.floor(Math.random() * 5) * CELL_HEIGHT + GRID_ROW_START_POS + CELL_PAD;
 
-  if (game.frames % game.zombiesSpawnRate === 0) {
-    let choice = Math.floor(Math.random() * game.zombiesTypes.length);
-    game.zombies.push(
-      new game.zombiesTypes[choice](
-        game,
-        canvas.width,
-        selectedRow,
-        CELL_WIDTH,
-        CELL_HEIGHT
-      )
-    );
-    game.zombiesPositions.push(selectedRow);
-    game.zombiesSpawnRate -= game.zombiesSpawnRate > 300 ? 20 : 0;
-  }
-}
+//   if (game.frames % game.zombiesSpawnRate === 0) {
+//     let choice = Math.floor(Math.random() * game.zombiesTypes.length);
+//     game.zombies.push(
+//       new game.zombiesTypes[choice](
+//         game,
+//         canvas.width,
+//         selectedRow,
+//         CELL_WIDTH,
+//         CELL_HEIGHT
+//       )
+//     );
+//     game.zombiesPositions.push(selectedRow);
+//     game.zombiesSpawnRate -= game.zombiesSpawnRate > 300 ? 20 : 0;
+//   }
+// }
 
 export function handleAllProjectiles(game: Game) {
   game.projectiles.forEach((projectile) => {

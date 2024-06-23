@@ -15,6 +15,7 @@ import {
   LAWN_CLEANER_WIDTH,
   theme,
   gameState,
+  CELL_WIDTH,
 } from "./constants";
 
 import { initializeGrid } from "./utilities/gridUtils";
@@ -43,6 +44,7 @@ import BallonZombie from "./components/Zombies/BalloonZombie";
 
 import { animate } from "./animate";
 import { addListeners } from "./addListeners";
+import { FloatingMsg } from "./FloatingMessage";
 
 export class Game {
   canvasPosition: DOMRect;
@@ -52,6 +54,7 @@ export class Game {
   projectiles: Projectile[];
   plants: Plant[];
   lawnCleaners: LawnCleaner[];
+  floatingMsgs: FloatingMsg[];
   sunCounts: number;
   zombiesSpawnRate: number;
   zombiesPositions: number[];
@@ -100,6 +103,7 @@ export class Game {
     this.plants = [];
     this.lawnCleaners = [];
 
+    this.floatingMsgs = [];
     this.sunCounts = 200;
     this.zombiesSpawnRate = 200;
     this.zombiesPositions = [];

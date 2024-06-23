@@ -9,9 +9,12 @@ import {
   clickSound,
   theme,
   gameState,
+  ctx,
 } from "./constants";
 import { isCollided } from "./utilities/collision";
 import { Game } from "./Game";
+import PeaShooter from "./components/Plants/PeaShooter";
+import { FloatingMsg } from "./FloatingMessage";
 const startPage = document.getElementById("start-page") as HTMLDivElement;
 
 export function addListeners(game: Game) {
@@ -116,6 +119,16 @@ export function addListeners(game: Game) {
       setTimeout(() => {
         CurrentPlant.canPlant = true;
       }, game.plantCooldownTime);
+    } else {
+      game.floatingMsgs.push(
+        new FloatingMsg(
+          "Need More Suns 🌞!!",
+          mouseStatus.x,
+          mouseStatus.y,
+          25,
+          "red"
+        )
+      );
     }
 
     game.shovelSelected = false;
