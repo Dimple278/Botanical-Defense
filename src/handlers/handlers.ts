@@ -61,7 +61,7 @@ export function handleAllProjectiles(game: Game) {
 }
 
 export function handleSuns(game: Game) {
-  if (game.frames % 300 === 0) {
+  if (game.frames % 325 === 0) {
     let x =
       Math.random() * (canvas.width - CELL_WIDTH * 2) + GRID_COL_START_POS;
     let y = Math.random() * 5 * CELL_HEIGHT + GRID_ROW_START_POS;
