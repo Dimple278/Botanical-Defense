@@ -16,7 +16,7 @@ import { isCollided } from "../../utilities/collision.ts";
 import Game from "../../Game.ts";
 
 export default class ThreePeaShooter extends Plant {
-  static cost: number = 100;
+  static cost: number = 250;
 
   constructor(game: Game, x: number, y: number, w: number, h: number) {
     super(game, x, y, w, h);

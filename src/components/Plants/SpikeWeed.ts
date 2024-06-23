@@ -4,7 +4,7 @@ import { SpikeweedSprite } from "../../constants";
 import Game from "../../Game";
 
 export default class Spikeweed extends Plant {
-  static cost: number = 20;
+  static cost: number = 50;
   hit: boolean = false;
 
   constructor(game: Game, x: number, y: number, w: number, h: number) {

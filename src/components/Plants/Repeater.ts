@@ -12,7 +12,7 @@ import Game from "../../Game.ts";
 // }
 
 export default class Repeater extends Plant {
-  static cost: number = 40;
+  static cost: number = 170;
 
   constructor(game: Game, x: number, y: number, w: number, h: number) {
     super(game, x, y, w, h);

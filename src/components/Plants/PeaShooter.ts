@@ -4,7 +4,7 @@ import Projectile from "../Projectiles/Projectile.ts";
 import Game from "../../Game.ts";
 
 export default class PeaShooter extends Plant {
-  static cost: number = 25;
+  static cost: number = 100;
 
   constructor(game: Game, x: number, y: number, w: number, h: number) {
     super(game, x, y, w, h);

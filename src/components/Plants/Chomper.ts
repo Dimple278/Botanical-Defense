@@ -3,7 +3,7 @@ import { CELL_WIDTH, chomp, ChomperSprite } from "../../constants.js";
 import Game from "../../Game.ts";
 
 export default class Chomper extends Plant {
-  static cost = 50;
+  static cost = 175;
   constructor(game: Game, x: number, y: number, w: number, h: number) {
     super(game, x, y, w, h);
   }

@@ -12,7 +12,7 @@ interface Zombie {
 }
 
 export default class PotatoMines extends Plant {
-  static cost: number = 40;
+  static cost: number = 100;
 
   constructor(game: Game, x: number, y: number, w: number, h: number) {
     super(game, x, y, w, h);

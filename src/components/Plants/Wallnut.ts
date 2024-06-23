@@ -3,7 +3,7 @@ import { WallnutSprite } from "../../constants";
 import Game from "../../Game";
 
 export default class WallNut extends Plant {
-  static cost: number = 60;
+  static cost: number = 75;
   health: number = 500;
 
   constructor(game: Game, x: number, y: number, w: number, h: number) {

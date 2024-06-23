@@ -4,7 +4,7 @@ import { CELL_HEIGHT, SunflowerSprite } from "../../constants.js";
 import Game from "../../Game.ts";
 
 export default class Sunflower extends Plant {
-  static cost: number = 25;
+  static cost: number = 50;
   frame: number;
 
   constructor(game: Game, x: number, y: number, w: number, h: number) {
@@ -39,7 +39,7 @@ export default class Sunflower extends Plant {
   }
 
   spwanSun() {
-    if (this.frame % 2000 === 0) {
+    if (this.frame % 700 === 0) {
       this.game.suns.push(
         new Sun(this.game, this.x, this.y + CELL_HEIGHT - 50, this.y - 40)
       );

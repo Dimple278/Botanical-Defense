@@ -30,6 +30,7 @@ export default class Plant {
   offsetW: number = -15;
   offsetH: number = -15;
   plantType: HTMLImageElement = PeaShooterSprite;
+  static cost: number;
 
   constructor(game: Game, x: number, y: number, w: number, h: number) {
     this.game = game;

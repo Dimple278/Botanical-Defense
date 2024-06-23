@@ -4,7 +4,7 @@ import { MelonpultSprite } from "../../constants";
 import Game from "../../Game";
 
 export default class MelonPult extends Plant {
-  static cost: number = 50;
+  static cost: number = 150;
   cooldownCounter: number = 0;
 
   constructor(game: Game, x: number, y: number, w: number, h: number) {
