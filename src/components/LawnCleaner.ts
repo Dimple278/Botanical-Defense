@@ -1,17 +1,7 @@
 import { canvas, ctx, LawnCleanerImg } from "../constants.ts";
 import { isCollided } from "../utilities/collision.ts";
 
-interface Game {
-  zombies: Zombie[];
-}
-
-interface Zombie {
-  x: number;
-  y: number;
-  w: number;
-  h: number;
-  delete: boolean;
-}
+import Game from "../Game.ts";
 
 export default class LawnCleaner {
   game: Game;

@@ -1,10 +1,6 @@
 import { CELL_HEIGHT } from "../../constants.js";
 import Projectile from "./Projectile.js";
-// import Game from "../../Game.js";
-
-interface Game {
-  zombies: any[];
-}
+import Game from "../../Game.js";
 
 export default class BottomProjectile extends Projectile {
   private bottomPos: number;

@@ -16,8 +16,7 @@ import { showCards } from "./utilities/showCards";
 import { handleMusic } from "./handlers/audio handlers/musicHandler";
 import { handleVolume } from "./handlers/audio handlers/volumeHandler";
 import { handleFloatingMessages } from "./handlers/floatingMsgHandler";
-import { setHighScore, updateScore } from "./utilities/highScore";
-const endPage = document.getElementById("end-page") as HTMLDivElement;
+import { updateScore } from "./utilities/highScore";
 
 export function animate(game: Game) {
   return function () {

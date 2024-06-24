@@ -1,11 +1,8 @@
 import {
-  gameState,
   GRID_COL_START_POS,
   GRID_ROW_START_POS,
-  LAWN_CLEANER_WIDTH,
   CELL_HEIGHT,
   CELL_WIDTH,
-  CELL_PAD,
   canvas,
   mouseStatus,
   ctx,
@@ -23,37 +20,6 @@ export function handleAllPlants(game: Game) {
   game.plants = game.plants.filter((plant) => plant.health > 0);
 }
 
-// export function handleAllZombies(game: Game) {
-//   game.zombies.forEach((zombie) => {
-//     zombie.update();
-//     if (zombie.x < GRID_COL_START_POS - LAWN_CLEANER_WIDTH) {
-//       gameState.current = gameState.gameOver;
-//     }
-//     if (zombie.health <= 0) {
-//       zombie.die = true;
-//       zombie.attacking = false;
-//     }
-//   });
-
-//   let selectedRow =
-//     Math.floor(Math.random() * 5) * CELL_HEIGHT + GRID_ROW_START_POS + CELL_PAD;
-
-//   if (game.frames % game.zombiesSpawnRate === 0) {
-//     let choice = Math.floor(Math.random() * game.zombiesTypes.length);
-//     game.zombies.push(
-//       new game.zombiesTypes[choice](
-//         game,
-//         canvas.width,
-//         selectedRow,
-//         CELL_WIDTH,
-//         CELL_HEIGHT
-//       )
-//     );
-//     game.zombiesPositions.push(selectedRow);
-//     game.zombiesSpawnRate -= game.zombiesSpawnRate > 300 ? 20 : 0;
-//   }
-// }
-
 export function handleAllProjectiles(game: Game) {
   game.projectiles.forEach((projectile) => {
     projectile.update();
@@ -61,10 +27,17 @@ export function handleAllProjectiles(game: Game) {
 }
 
 export function handleSuns(game: Game) {
-  if (game.frames % 325 === 0) {
-    let x =
-      Math.random() * (canvas.width - CELL_WIDTH * 2) + GRID_COL_START_POS;
-    let y = Math.random() * 5 * CELL_HEIGHT + GRID_ROW_START_POS;
+  if (game.frames % 350 === 0) {
+    const sunWidth = CELL_WIDTH - 50;
+    const sunHeight = CELL_HEIGHT - 25;
+
+    const x =
+      Math.random() * (canvas.width - sunWidth - CELL_WIDTH * 2) +
+      GRID_COL_START_POS;
+    const y =
+      Math.random() * (canvas.height - sunHeight - GRID_ROW_START_POS * 2) +
+      GRID_ROW_START_POS;
+
     game.suns.push(new Sun(game, x, y, 0));
   }
 
@@ -75,6 +48,9 @@ export function handleSuns(game: Game) {
       sun.collect = true;
     }
   });
+
+  // Remove collected suns
+  // game.suns = game.suns.filter((sun) => !sun.collect);
 }
 
 export function handleLawnCleaners(game: Game) {
