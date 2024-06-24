@@ -1,3 +1,10 @@
+* {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+
+
 body {
   margin: 0;
   display: flex;
@@ -5,8 +12,9 @@ body {
   align-items: center;
   height: 100vh;
   /* background-color: #f0f0f0; */
-  overflow: hidden;
-}
+  /* overflow: hidden; */
+ }  
+
 #start-page,
 #end-page {
   position: absolute;
@@ -29,10 +37,10 @@ body {
   transform: translate(-50%, -50%);
   /* width: 900px;
   height: 600px; */
-  width: 100vw;
-  height: 100vh;
+  /* width: 100vw; */
+  /* height: 100vh; */
   /* background: white; */
-}
+ } 
 
 #start-page {
   visibility: visible;
@@ -64,6 +72,12 @@ body {
 #start-button {
   top: 50%; 
   left: 50%; 
+  transform: translate(-50%, -50%); /* Translate to the center */
+}
+
+#restart-button {
+  top: 50%; /* Center the button vertically */
+  left: 50%; /* Center the button horizontally */
   transform: translate(-50%, -50%); /* Translate to the center */
 }
 

@@ -7,8 +7,8 @@ export const ctx: CanvasRenderingContext2D = canvas.getContext("2d")!;
 canvas.width = 1898;
 canvas.height = 970;
 
-// canvas.height = window.innerHeight;404
-// canvas.width = window.innerWidth;1673
+// canvas.height = window.innerHeight;
+// canvas.width = window.innerWidth;
 
 // Get loading element
 export const loading = document.querySelector(".loading");
