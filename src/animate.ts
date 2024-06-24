@@ -16,6 +16,7 @@ import { showCards } from "./utilities/showCards";
 import { handleMusic } from "./handlers/audio handlers/musicHandler";
 import { handleVolume } from "./handlers/audio handlers/volumeHandler";
 import { handleFloatingMessages } from "./handlers/floatingMsgHandler";
+import { setHighScore, updateScore } from "./utilities/highScore";
 const endPage = document.getElementById("end-page") as HTMLDivElement;
 
 export function animate(game: Game) {
@@ -27,8 +28,8 @@ export function animate(game: Game) {
     handleAllPlants(game);
     handleAllZombies(game);
     handleAllProjectiles(game);
-    showResources(game);
     handleSuns(game);
+    showResources(game);
     handleLawnCleaners(game);
     cleanOrphanObjects(game);
     showCards(game);
@@ -36,6 +37,7 @@ export function animate(game: Game) {
     handleMusic(game);
     handleVolume(game);
     handleFloatingMessages(game);
+    updateScore(game);
     game.frames++;
 
     if (gameState.current !== gameState.gameOver)

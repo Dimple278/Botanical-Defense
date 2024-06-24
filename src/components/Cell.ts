@@ -1,4 +1,4 @@
-import { mouseStatus, ctx } from "../constants";
+import { mouseStatus } from "../constants";
 import { isCollided } from "../utilities/collision";
 
 export default class Cell {

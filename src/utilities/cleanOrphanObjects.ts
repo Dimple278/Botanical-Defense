@@ -1,4 +1,3 @@
-// cleanOrphanObjects.ts
 import { Game } from "../Game";
 
 export function cleanOrphanObjects(game: Game) {

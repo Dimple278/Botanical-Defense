@@ -15,7 +15,6 @@ import {
   LAWN_CLEANER_WIDTH,
   theme,
   gameState,
-  CELL_WIDTH,
 } from "./constants";
 
 import { initializeGrid } from "./utilities/gridUtils";

@@ -39,11 +39,11 @@ export function handleAllZombies(game: Game) {
   if (game.frames % game.zombiesSpawnRate === 0) {
     let maxZombieIndex = 0;
 
-    if (game.score >= 200) {
+    if (game.score >= 150) {
       maxZombieIndex = 4; // Allow all types of zombies
-    } else if (game.score >= 120) {
+    } else if (game.score >= 100) {
       maxZombieIndex = 3; // Allow up to the 4th type of zombie
-    } else if (game.score >= 80) {
+    } else if (game.score >= 50) {
       maxZombieIndex = 2; // Allow up to the 3rd type of zombie
     } else {
       maxZombieIndex = 1; // Allow only the first and second types of zombies

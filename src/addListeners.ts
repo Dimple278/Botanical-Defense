@@ -8,12 +8,9 @@ import {
   CELL_HEIGHT,
   clickSound,
   theme,
-  gameState,
-  ctx,
 } from "./constants";
 import { isCollided } from "./utilities/collision";
 import { Game } from "./Game";
-import PeaShooter from "./components/Plants/PeaShooter";
 import { FloatingMsg } from "./FloatingMessage";
 const startPage = document.getElementById("start-page") as HTMLDivElement;
 
@@ -53,7 +50,7 @@ export function addListeners(game: Game) {
     game.volume && clickSound.play();
     let cellPosX: number | undefined;
     let cellPosY: number | undefined;
-    let plantCost = 25;
+    // let plantCost = 25;
 
     // Find the collided cell and extracts it's position
     game.grids.every((cell) => {
