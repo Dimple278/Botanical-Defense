@@ -1,10 +1,4 @@
-import {
-  ctx,
-  GRID_ROW_START_POS,
-  CELL_HEIGHT,
-  CELL_PAD,
-  mouseStatus,
-} from "../constants";
+import { ctx, GRID_ROW_START_POS, mouseStatus } from "../constants";
 import { isCollided } from "./collision";
 import { Game } from "../Game";
 

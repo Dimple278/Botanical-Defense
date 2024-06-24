@@ -3,14 +3,6 @@ import { CELL_WIDTH, CELL_HEIGHT, PotatoMineSprite } from "../../constants.js";
 import { isCollided } from "../../utilities/collision.ts";
 import Game from "../../Game.ts";
 
-interface Zombie {
-  x: number;
-  y: number;
-  w: number;
-  h: number;
-  delete: boolean;
-}
-
 export default class PotatoMines extends Plant {
   static cost: number = 100;
 
