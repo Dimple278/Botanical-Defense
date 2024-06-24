@@ -10,70 +10,8 @@
       href="https://fonts.googleapis.com/css2?family=Creepster&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="./src/style.css" />
     <title>Botanical Defense</title>
-    <style>
-      body {
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background-color: #f0f0f0;
-        overflow: hidden;
-      }
-
-      #start-page,
-      #end-page {
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        flex-direction: column;
-        visibility: hidden;
-      }
-
-      #start-page {
-        visibility: visible;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      #start-page img,
-      #end-page img {
-        width: 80%;
-        height: auto;
-        display: block;
-      }
-
-      #start-button,
-      #restart-button {
-        padding: 10px 20px;
-        font-size: 50px;
-        font-family: Creepster;
-        background-color: rgb(0, 255, 38);
-        border-radius: 10px;
-        cursor: pointer;
-        margin-top: 20px;
-        z-index: 1;
-        position: absolute;
-      }
-
-      #start-button {
-        top: 50%; /* Center the button vertically */
-        left: 50%; /* Center the button horizontally */
-        transform: translate(-50%, -50%); /* Translate to the center */
-      }
-
-      #restart-button {
-        top: 50%; /* Center the button vertically */
-        left: 50%; /* Center the button horizontally */
-        transform: translate(-50%, -50%); /* Translate to the center */
-      }
-    </style>
   </head>
 
   <body>
@@ -86,6 +24,14 @@
       <button id="restart-button">Restart Game</button>
     </div> -->
     <canvas id="canvas"></canvas>
+    <div class="loading">
+      Loading
+      <div class="hollowLoader">
+        <div class="largeBox">
+          <div class="smallBox"></div>
+        </div>
+      </div>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
