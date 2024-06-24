@@ -4,7 +4,7 @@ import {
   CELL_WIDTH,
   GRID_ROW_START_POS,
   GRID_COL_START_POS,
-} from "../constants";
+} from "../constants/constants";
 import Cell from "../components/Cell";
 
 // Initializes the game grid

@@ -1,22 +1,21 @@
 // animate.ts
-import { ctx, bg, canvas, gameState } from "./constants";
-import { Game } from "./Game";
+import { ctx, bg, canvas, gameState } from "../constants/constants";
+import { Game } from "../Game";
 import {
   handleAllPlants,
   handleAllProjectiles,
   handleSuns,
   handleLawnCleaners,
   handleShovel,
-  // handleAllZombies,
-} from "./handlers/handlers";
-import { handleAllZombies } from "./handlers/zombieHandler";
-import { cleanOrphanObjects } from "./utilities/cleanOrphanObjects";
-import { showResources } from "./utilities/showResources";
-import { showCards } from "./utilities/showCards";
-import { handleMusic } from "./handlers/audio handlers/musicHandler";
-import { handleVolume } from "./handlers/audio handlers/volumeHandler";
-import { handleFloatingMessages } from "./handlers/floatingMsgHandler";
-import { updateScore } from "./utilities/highScore";
+} from "../handlers/handlers";
+import { handleAllZombies } from "../handlers/zombieHandler";
+import { cleanOrphanObjects } from "../utilities/cleanOrphanObjects";
+import { showResources } from "../utilities/showResources";
+import { showCards } from "../utilities/showCards";
+import { handleMusic } from "../handlers/audio handlers/musicHandler";
+import { handleVolume } from "../handlers/audio handlers/volumeHandler";
+import { handleFloatingMessages } from "../handlers/floatingMsgHandler";
+import { updateScore } from "../utilities/highScore";
 
 export function animate(game: Game) {
   return function () {

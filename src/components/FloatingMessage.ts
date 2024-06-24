@@ -1,6 +1,6 @@
-import { ctx } from "./constants";
+import { ctx } from "../constants/constants";
 
-export class FloatingMsg {
+export default class FloatingMsg {
   value: string;
   x: number;
   y: number;

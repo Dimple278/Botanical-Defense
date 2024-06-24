@@ -3,7 +3,7 @@ import {
   ctx,
   NormalZombieSprite,
   zombieFall,
-} from "../../constants.ts";
+} from "../../constants/constants.ts";
 
 import Game from "../../Game.ts";
 

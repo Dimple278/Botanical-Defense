@@ -1,5 +1,5 @@
 import Plant from "./Plant";
-import { WallnutSprite } from "../../constants";
+import { WallnutSprite } from "../../constants/constants";
 import Game from "../../Game";
 
 export default class WallNut extends Plant {
@@ -28,7 +28,7 @@ export default class WallNut extends Plant {
 
     // Offset for drawing image
     this.offsetX = 0;
-    this.offsetY = 0; // Corrected from offsety to offsetY
+    this.offsetY = 0;
     this.offsetW = 0;
     this.offsetH = 0;
   }

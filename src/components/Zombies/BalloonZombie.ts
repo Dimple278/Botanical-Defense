@@ -1,4 +1,4 @@
-import { BallonZombieSprite } from "../../constants";
+import { BallonZombieSprite } from "../../constants/constants.ts";
 import FootballZombie from "./FootballZombie";
 import { Game } from "../../Game.ts";
 

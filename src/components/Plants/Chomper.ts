@@ -1,5 +1,5 @@
 import Plant from "./Plant.js";
-import { CELL_WIDTH, chomp, ChomperSprite } from "../../constants.js";
+import { CELL_WIDTH, chomp, ChomperSprite } from "../../constants/constants.js";
 import Game from "../../Game.ts";
 
 export default class Chomper extends Plant {

@@ -1,4 +1,4 @@
-import { CELL_PAD, ctx, PeaShooterSprite } from "../../constants.ts";
+import { CELL_PAD, ctx, PeaShooterSprite } from "../../constants/constants.ts";
 import { isCollided } from "../../utilities/collision.ts";
 import Game from "../../Game.ts";
 

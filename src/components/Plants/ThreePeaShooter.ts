@@ -10,7 +10,7 @@ import {
   GRID_ROW_START_POS,
   peaShoot,
   ThreepeaShooterSprite,
-} from "../../constants.js";
+} from "../../constants/constants.js";
 
 import { isCollided } from "../../utilities/collision.ts";
 import Game from "../../Game.ts";

@@ -1,10 +1,15 @@
-import { ctx, resourcescard, gameState, canvas, Button } from "../constants";
+import {
+  ctx,
+  resourcescard,
+  gameState,
+  canvas,
+  Button,
+} from "../constants/constants";
 import { Game } from "../Game";
 
 export function showResources(game: Game) {
   ctx.drawImage(resourcescard, 20, 15, 145, 45);
 
-  // Set font and color for the general resources display
   ctx.fillStyle = "black";
   ctx.font = "30px Creepster";
   ctx.fillText(game.sunCounts.toString(), 79, 48);
@@ -24,9 +29,8 @@ export function showResources(game: Game) {
     // Save the current context state
     ctx.save();
 
-    // Set font and color for the game over message
-    ctx.fillStyle = "red"; // Change to desired color
-    ctx.font = "120px Creepster"; // Change to desired size
+    ctx.fillStyle = "red";
+    ctx.font = "120px Creepster";
 
     // Center the text horizontally
     ctx.textAlign = "center";

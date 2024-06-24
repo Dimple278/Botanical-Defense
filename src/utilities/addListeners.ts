@@ -8,10 +8,10 @@ import {
   CELL_HEIGHT,
   clickSound,
   theme,
-} from "./constants";
-import { isCollided } from "./utilities/collision";
-import { Game } from "./Game";
-import { FloatingMsg } from "./FloatingMessage";
+} from "../constants/constants";
+import { isCollided } from "../utilities/collision";
+import { Game } from "../Game";
+import FloatingMsg from "../components/FloatingMessage";
 const startPage = document.getElementById("start-page") as HTMLDivElement;
 
 export function addListeners(game: Game) {

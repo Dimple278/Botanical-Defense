@@ -4,7 +4,7 @@ import {
   canvas,
   CELL_HEIGHT,
   melonBullet,
-} from "../../constants";
+} from "../../constants/constants";
 import { isCollided } from "../../utilities/collision";
 import Projectile from "./Projectile";
 import Zombie from "../Zombies/Zombie";

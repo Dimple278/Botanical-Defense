@@ -1,4 +1,4 @@
-import { BucketHeadZombieSprite } from "../../constants";
+import { BucketHeadZombieSprite } from "../../constants/constants.ts";
 import Zombie from "./Zombie";
 import { Game } from "../../Game.ts";
 

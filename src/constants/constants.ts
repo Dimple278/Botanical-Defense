@@ -1,4 +1,4 @@
-import { getImage } from "./utilities/getImage";
+import { getImage } from "../utilities/getImage";
 
 export const canvas: HTMLCanvasElement = document.querySelector("canvas")!;
 export const ctx: CanvasRenderingContext2D = canvas.getContext("2d")!;

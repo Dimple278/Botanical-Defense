@@ -1,4 +1,4 @@
-import { CELL_HEIGHT } from "../../constants.js";
+import { CELL_HEIGHT } from "../../constants/constants.js";
 import Projectile from "./Projectile.js";
 import Game from "../../Game.js";
 

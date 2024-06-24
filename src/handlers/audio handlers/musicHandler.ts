@@ -1,5 +1,5 @@
 import Game from "../../Game";
-import { ctx, mouseStatus, musicImg, theme } from "../../constants";
+import { ctx, mouseStatus, musicImg, theme } from "../../constants/constants";
 import { isCollided } from "../../utilities/collision";
 
 // Handle the music on and off function
@@ -34,6 +34,7 @@ export function handleMusic(game: Game) {
       game.musicBoundary.x,
       game.musicBoundary.y + game.musicBoundary.h
     );
+    ctx.strokeStyle = "rgba(0, 0, 0, 1)";
     ctx.stroke();
   }
 }

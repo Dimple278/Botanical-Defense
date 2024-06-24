@@ -8,7 +8,7 @@ import {
   CELL_PAD,
   canvas,
   CELL_WIDTH,
-} from "../constants";
+} from "../constants/constants";
 
 export function handleAllZombies(game: Game) {
   game.zombies.forEach((zombie) => {

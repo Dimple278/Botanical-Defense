@@ -15,7 +15,7 @@ import {
   LAWN_CLEANER_WIDTH,
   theme,
   gameState,
-} from "./constants";
+} from "./constants/constants";
 
 import { initializeGrid } from "./utilities/gridUtils";
 
@@ -33,6 +33,7 @@ import Sunflower from "./components/Plants/Sunflower";
 import Cell from "./components/Cell";
 import Sun from "./components/Sun";
 import LawnCleaner from "./components/LawnCleaner";
+import FloatingMsg from "./components/FloatingMessage";
 
 import Zombie from "./components/Zombies/Zombie";
 import FootballZombie from "./components/Zombies/FootballZombie";
@@ -41,9 +42,8 @@ import Projectile from "./components/Projectiles/Projectile";
 import BucketHeadZombie from "./components/Zombies/BucketZombie";
 import BallonZombie from "./components/Zombies/BalloonZombie";
 
-import { animate } from "./animate";
-import { addListeners } from "./addListeners";
-import { FloatingMsg } from "./FloatingMessage";
+import { animate } from "./utilities/animate";
+import { addListeners } from "./utilities/addListeners";
 import { getHighScore } from "./utilities/highScore";
 
 export class Game {
@@ -77,7 +77,6 @@ export class Game {
   volumeBoudnary: { x: number; y: number; w: number; h: number };
   animationId: number | undefined;
 
-  // startMenu: HTMLElement | null;
   startBtn: HTMLElement;
   endMenu: HTMLElement | null;
   restartBtn: HTMLElement;
@@ -89,7 +88,6 @@ export class Game {
     this.animationId = undefined;
 
     // Get dom elements
-    // this.startMenu = document.querySelector(".start-menu");
     this.startBtn = document.getElementById("start-button") as HTMLDivElement;
     this.endMenu = document.querySelector(".end-menu");
     this.restartBtn = document.getElementById(

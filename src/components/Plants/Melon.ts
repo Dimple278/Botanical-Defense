@@ -1,6 +1,6 @@
 import Plant from "./Plant";
 import ParabolicProjectile from "../Projectiles/ParabolicProjectile";
-import { MelonpultSprite } from "../../constants";
+import { MelonpultSprite } from "../../constants/constants";
 import Game from "../../Game";
 
 export default class MelonPult extends Plant {

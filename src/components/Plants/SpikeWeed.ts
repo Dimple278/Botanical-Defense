@@ -1,6 +1,6 @@
 import Plant from "./Plant";
 import { isCollided } from "../../utilities/collision";
-import { SpikeweedSprite } from "../../constants";
+import { SpikeweedSprite } from "../../constants/constants";
 import Game from "../../Game";
 
 export default class Spikeweed extends Plant {

@@ -1,5 +1,5 @@
 import Plant from "./Plant.js";
-import { CELL_WIDTH, peaShoot } from "../../constants.js";
+import { CELL_WIDTH, peaShoot } from "../../constants/constants.js";
 import Projectile from "../Projectiles/Projectile.ts";
 import Game from "../../Game.ts";
 

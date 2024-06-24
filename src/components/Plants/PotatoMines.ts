@@ -1,5 +1,9 @@
 import Plant from "./Plant.js";
-import { CELL_WIDTH, CELL_HEIGHT, PotatoMineSprite } from "../../constants.js";
+import {
+  CELL_WIDTH,
+  CELL_HEIGHT,
+  PotatoMineSprite,
+} from "../../constants/constants.js";
 import { isCollided } from "../../utilities/collision.ts";
 import Game from "../../Game.ts";
 

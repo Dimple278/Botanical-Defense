@@ -1,6 +1,6 @@
 import Plant from "./Plant.js";
 import Sun from "../Sun.js";
-import { CELL_HEIGHT, SunflowerSprite } from "../../constants.js";
+import { CELL_HEIGHT, SunflowerSprite } from "../../constants/constants.js";
 import Game from "../../Game.ts";
 
 export default class Sunflower extends Plant {

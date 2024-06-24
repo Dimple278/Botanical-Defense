@@ -1,4 +1,4 @@
-import { canvas, ctx, LawnCleanerImg } from "../constants.ts";
+import { canvas, ctx, LawnCleanerImg } from "../constants/constants.ts";
 import { isCollided } from "../utilities/collision.ts";
 
 import Game from "../Game.ts";

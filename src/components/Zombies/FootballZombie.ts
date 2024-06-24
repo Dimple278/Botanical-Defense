@@ -1,4 +1,4 @@
-import { FootballZombieSprite } from "../../constants";
+import { FootballZombieSprite } from "../../constants/constants.ts";
 import Zombie from "./Zombie";
 import { Game } from "../../Game.ts";
 

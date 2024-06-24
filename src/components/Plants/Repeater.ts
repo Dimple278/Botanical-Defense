@@ -1,15 +1,11 @@
 import Plant from "./Plant.js";
 import Projectile from "../Projectiles/Projectile.ts";
-import { CELL_WIDTH, peaShoot, RepeaterSprite } from "../../constants.js";
+import {
+  CELL_WIDTH,
+  peaShoot,
+  RepeaterSprite,
+} from "../../constants/constants.js";
 import Game from "../../Game.ts";
-
-// interface Game {
-//   frames: number;
-//   volume: boolean;
-//   projectiles: Projectile[];
-//   zombies: any[];
-//   zombiesPositions: number[];
-// }
 
 export default class Repeater extends Plant {
   static cost: number = 170;

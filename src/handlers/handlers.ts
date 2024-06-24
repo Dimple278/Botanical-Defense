@@ -8,7 +8,7 @@ import {
   ctx,
   ShovelImg,
   ShovelBtn,
-} from "../constants";
+} from "../constants/constants";
 import { isCollided } from "../utilities/collision";
 import Sun from "../components/Sun";
 import { Game } from "../Game";

@@ -1,5 +1,5 @@
 import Game from "../../Game";
-import { ctx, mouseStatus, volumeImg } from "../../constants";
+import { ctx, mouseStatus, volumeImg } from "../../constants/constants";
 import { isCollided } from "../../utilities/collision";
 
 // Manages Sound
