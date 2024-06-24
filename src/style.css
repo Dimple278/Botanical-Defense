@@ -71,6 +71,7 @@ body {
 /* Loading spinner animation */
 
 .loading {
+  font-family: Creepster;
   font-size: 90px;
   width: 100%;
   height: 100vh;
@@ -107,6 +108,9 @@ body {
   z-index: 1;
   outline: 1px solid transparent;
   animation: smallBoxAnim 2s alternate infinite ease-in-out;
+}
+.hide {
+  display: none;
 }
 
 @keyframes largeBoxAnim {

@@ -12,7 +12,7 @@ canvas.height = 970;
 
 // Get loading element
 export const loading = document.querySelector(".loading");
-export const startMenuBtn = document.querySelector(".start-menu__btn");
+// export const startBtn = document.querySelector(".start-button");
 
 // Required Variables
 export const CELL_WIDTH = 140;
