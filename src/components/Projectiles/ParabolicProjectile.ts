@@ -16,7 +16,8 @@ export default class ParabolicProjectile extends Projectile {
   initialFrame: number;
   theta: number;
   futureTime: number;
-  target: Zombie | undefined;
+  // target: Zombie | undefined;
+  target: any;
   futureZombiePos: number;
   targetDist: number;
   speed: number;
@@ -40,11 +41,9 @@ export default class ParabolicProjectile extends Projectile {
 
     // Calculate speed and angle based on target's position and movement
     if (this.target) {
-      //@ts-ignore
       if (this.target.attacking !== true) {
         // Predict future position if zombie is not attacking
         this.futureZombiePos =
-          //@ts-ignore
           this.target.x - this.target.velocity * this.futureTime;
         this.targetDist = this.futureZombiePos - this.x;
         this.speed = this.targetDist / this.futureTime;
