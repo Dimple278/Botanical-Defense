@@ -224,8 +224,6 @@ export class Game {
     this.score = 0;
     this.sunCounts = 125;
 
-    console.log("music is ", this.music);
-    console.log("theme is ", theme);
     this.music ? theme.play() : theme.pause();
     gameState.current = gameState.gamePlaying;
     // window.cancelAnimationFrame(this.animationId);
