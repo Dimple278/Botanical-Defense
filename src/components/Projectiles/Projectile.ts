@@ -19,6 +19,9 @@ export default class Projectile {
   delete: boolean = false;
   bullet: HTMLImageElement = normalBullet;
 
+  /**
+   * Represents a projectile fired by a plant in the game.
+   */
   constructor(game: Game, x: number, y: number, w: number, h: number) {
     this.game = game;
     this.x = x;

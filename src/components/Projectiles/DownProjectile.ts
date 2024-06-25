@@ -2,6 +2,9 @@ import { CELL_HEIGHT } from "../../constants/constants.js";
 import Projectile from "./Projectile.js";
 import Game from "../../Game.js";
 
+/**
+ * Represents a projectile that moves downward until reaching a specified bottom position.
+ */
 export default class BottomProjectile extends Projectile {
   private bottomPos: number;
 
