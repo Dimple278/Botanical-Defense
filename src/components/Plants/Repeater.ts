@@ -7,6 +7,10 @@ import {
 } from "../../constants/constants.js";
 import Game from "../../Game.ts";
 
+/**
+ * Represents a Repeater plant that shoots two projectiles at once.
+ * @extends Plant
+ */
 export default class Repeater extends Plant {
   static cost: number = 170;
 

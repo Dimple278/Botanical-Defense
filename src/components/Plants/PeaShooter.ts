@@ -3,6 +3,11 @@ import { CELL_WIDTH, peaShoot } from "../../constants/constants.js";
 import Projectile from "../Projectiles/Projectile.ts";
 import Game from "../../Game.ts";
 
+/**
+ * @class PeaShooter
+ * @extends Plant
+ * @classdesc Represents a PeaShooter plant in the game, with specific attack behaviors.
+ */
 export default class PeaShooter extends Plant {
   static cost: number = 100;
 

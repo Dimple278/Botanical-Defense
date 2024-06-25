@@ -3,6 +3,10 @@ import Sun from "../Sun.js";
 import { CELL_HEIGHT, SunflowerSprite } from "../../constants/constants.js";
 import Game from "../../Game.ts";
 
+/**
+ * Represents a Sunflower plant that generates sun resources over time.
+ * @extends Plant
+ */
 export default class Sunflower extends Plant {
   static cost: number = 50;
   frame: number;

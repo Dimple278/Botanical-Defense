@@ -2,6 +2,10 @@ import { CELL_PAD, ctx, PeaShooterSprite } from "../../constants/constants.ts";
 import { isCollided } from "../../utilities/collision.ts";
 import Game from "../../Game.ts";
 
+/**
+ * @class Plant
+ * @classdesc Represents a plant in the game, responsible for handling behavior, animations, and interactions with zombies.
+ */
 export default class Plant {
   game: Game;
   x: number;
@@ -46,9 +50,11 @@ export default class Plant {
 
   // Initializes all the features of plants
   initPlantSpec() {
+    //Life
     this.health = 100;
     this.bulletW = 60;
     this.bulletH = 40;
+    //Plant Status
     this.attacking = false;
     this.cooldown = false;
     this.cooldown = false;
@@ -67,6 +73,8 @@ export default class Plant {
     this.spriteW = 71;
     this.spriteH = 71;
     this.animationSpeed = 3;
+
+    // Offset for drawing image
     this.offsetX = -15;
     this.offsetY = -15;
     this.offsetW = -15;
@@ -97,7 +105,6 @@ export default class Plant {
   }
 
   // If the plant collides with zombie then the plant health decreases
-  // with respect to the damage of the plant
   handleCollision() {
     this.game.zombies.forEach((zombie) => {
       if (isCollided(this, zombie)) {

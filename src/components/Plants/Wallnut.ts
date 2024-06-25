@@ -2,6 +2,10 @@ import Plant from "./Plant";
 import { WallnutSprite } from "../../constants/constants";
 import Game from "../../Game";
 
+/**
+ * Represents a WallNut plant that acts as a defensive barrier with high health.
+ * @extends Plant
+ */
 export default class WallNut extends Plant {
   static cost: number = 75;
   health: number = 500;

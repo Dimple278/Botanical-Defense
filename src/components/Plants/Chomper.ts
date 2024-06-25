@@ -2,6 +2,11 @@ import Plant from "./Plant.js";
 import { CELL_WIDTH, chomp, ChomperSprite } from "../../constants/constants.js";
 import Game from "../../Game.ts";
 
+/**
+ * @class Chomper
+ * @extends Plant
+ * @classdesc Represents a Chomper plant in the game, with specific animation and attack behaviors.
+ */
 export default class Chomper extends Plant {
   static cost = 175;
   constructor(game: Game, x: number, y: number, w: number, h: number) {
@@ -44,7 +49,7 @@ export default class Chomper extends Plant {
       // Stop the attacking mode after the animation is finished
       this.attackNow = false;
     } else if (this.cooldown) {
-      // If in cooldown shows the eating animation
+      // If in cooldown shows the chewing animation
       this.startFrameX = 6;
       this.startFrameY = 4;
       this.endFrameX = 10;

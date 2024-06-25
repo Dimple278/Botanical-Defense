@@ -15,6 +15,10 @@ import {
 import { isCollided } from "../../utilities/collision.ts";
 import Game from "../../Game.ts";
 
+/**
+ * Represents a ThreePeaShooter plant that shoots three projectiles simultaneously.
+ * @extends Plant
+ */
 export default class ThreePeaShooter extends Plant {
   static cost: number = 250;
 
@@ -47,6 +51,10 @@ export default class ThreePeaShooter extends Plant {
     this.plantType = ThreepeaShooterSprite;
   }
 
+  /**
+   * Attacks by shooting three projectiles simultaneously.
+   * @returns {void}
+   */
   attack() {
     if (this.game.frames % 100 === 0) {
       this.attackNow = true;

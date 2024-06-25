@@ -29,7 +29,7 @@ export default class MelonPult extends Plant {
 
     // Offset for drawing image
     this.offsetX = 20;
-    this.offsetY = -15; // Corrected from offsety to offsetY
+    this.offsetY = -15;
     this.offsetW = 25;
     this.offsetH = -15;
   }

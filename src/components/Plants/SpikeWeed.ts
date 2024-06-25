@@ -3,6 +3,10 @@ import { isCollided } from "../../utilities/collision";
 import { SpikeweedSprite } from "../../constants/constants";
 import Game from "../../Game";
 
+/**
+ * Represents a Spikeweed plant that damages zombies upon collision.
+ * @extends Plant
+ */
 export default class Spikeweed extends Plant {
   static cost: number = 50;
   hit: boolean = false;

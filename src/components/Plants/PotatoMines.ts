@@ -7,6 +7,11 @@ import {
 import { isCollided } from "../../utilities/collision.ts";
 import Game from "../../Game.ts";
 
+/**
+ * @class PotatoMines
+ * @extends Plant
+ * @classdesc Represents a PotatoMine plant in the game, with specific attack behaviors.
+ */
 export default class PotatoMines extends Plant {
   static cost: number = 100;
 
@@ -35,6 +40,7 @@ export default class PotatoMines extends Plant {
     this.offsetH = 0;
   }
 
+  //load the sprite of plant
   loadSprite() {
     this.plantType = PotatoMineSprite;
   }
