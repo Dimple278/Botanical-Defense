@@ -13,13 +13,6 @@ import { isCollided } from "../utilities/collision";
 import Sun from "../components/Sun";
 import { Game } from "../Game";
 
-export function handleAllPlants(game: Game) {
-  game.plants.forEach((plant) => {
-    plant.update();
-  });
-  game.plants = game.plants.filter((plant) => plant.health > 0);
-}
-
 export function handleAllProjectiles(game: Game) {
   game.projectiles.forEach((projectile) => {
     projectile.update();

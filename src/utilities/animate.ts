@@ -2,13 +2,13 @@
 import { ctx, bg, canvas, gameState } from "../constants/constants";
 import { Game } from "../Game";
 import {
-  handleAllPlants,
   handleAllProjectiles,
   handleSuns,
   handleLawnCleaners,
   handleShovel,
 } from "../handlers/handlers";
-import { handleAllZombies } from "../handlers/zombieHandler";
+import handleAllPlants from "../handlers/plantsHandler";
+import handleAllZombies from "../handlers/zombieHandler";
 import { cleanOrphanObjects } from "../utilities/cleanOrphanObjects";
 import { showResources } from "../utilities/showResources";
 import { showCards } from "../utilities/showCards";

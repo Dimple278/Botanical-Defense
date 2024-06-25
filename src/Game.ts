@@ -78,9 +78,7 @@ export class Game {
   animationId: number | undefined;
 
   startBtn: HTMLElement;
-  endMenu: HTMLElement | null;
-  restartBtn: HTMLElement;
-  endScore: HTMLElement | null;
+
   highScore: number;
 
   constructor() {
@@ -89,11 +87,6 @@ export class Game {
 
     // Get dom elements
     this.startBtn = document.getElementById("start-button") as HTMLDivElement;
-    this.endMenu = document.querySelector(".end-menu");
-    this.restartBtn = document.getElementById(
-      "restart-button"
-    ) as HTMLDivElement;
-    this.endScore = document.querySelector(".end-menu__score");
 
     this.grids = [];
     this.zombies = [];

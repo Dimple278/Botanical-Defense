@@ -10,7 +10,7 @@ import {
   CELL_WIDTH,
 } from "../constants/constants";
 
-export function handleAllZombies(game: Game) {
+export default function handleAllZombies(game: Game) {
   game.zombies.forEach((zombie) => {
     zombie.update();
     if (zombie.x < GRID_COL_START_POS - LAWN_CLEANER_WIDTH) {
